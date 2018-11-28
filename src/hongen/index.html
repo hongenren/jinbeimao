@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>名字</title>
+  <style>
+      #box{
+        width: 360px;
+        height: 360px;
+        background: #fff;
+
+      }
+      div{
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin: 10px;
+        display: inline-block;
+      }
+  </style>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="message">
+        {{message}}
+    </div>
+</body>
+<script>
+class Vue {
+  constructor (options={}) {
+    //这里简化了。。其实要merge
+    this.$options=options
+    //这里简化了。。其实要区分的
+    let data = this._data=this.$options.data
+    console.log(data)
+  }
+
+
+
+}
+
+</script>
+<script>
+new Vue({
+  el:"#box",
+  data:{
+    message:"hello"
+  }
+})
+</script>
+</html>

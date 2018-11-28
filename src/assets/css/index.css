@@ -1,0 +1,451 @@
+.textBox {
+  padding: 1.06666667rem 0.64rem;
+}
+.textBox .textDiv {
+  padding-top: 0.64rem;
+}
+.textBox .textFont {
+  padding-top: 0.53333333rem;
+}
+.textBox .textFont p {
+  padding-top: 0.42666667rem;
+  line-height: 1.17333333rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.064rem;
+}
+.textBox .textFont .imgPrege {
+  width: 100%;
+  padding-top: 0.42666667rem;
+}
+.textBox .textFont a {
+  color: #3799d8;
+}
+.textBox .textFont h5 {
+  padding-top: 0.42666667rem;
+}
+.detail {
+  padding: 0.42666667rem 0;
+}
+.detail .detail-log {
+  height: 2.13333333rem;
+  width: 2.13333333rem;
+  display: block;
+  margin: 0 auto 0.42666667rem;
+}
+.detail .title-p {
+  text-align: center;
+}
+.detail .title-p span {
+  padding: 0.10666667rem 0.17066667rem;
+  background-color: #3799D8;
+  color: #fff;
+  border-radius: 0.064rem;
+  font-size: 0.384rem;
+}
+.tab-adaption {
+  margin: 0.64rem 0;
+  overflow: hidden;
+  background-color: #038fff;
+}
+.tab-adaption li {
+  float: left;
+  width: 33%;
+  text-align: center;
+  color: #fff;
+  padding: 0.64rem 0;
+}
+.proSurvey .proTitle {
+  font-size: 0.74666667rem;
+  padding-top: 0.64rem;
+  font-weight: normal;
+}
+.proSurvey .projs {
+  line-height: 0.96rem;
+  padding: 0.42666667rem 0;
+  margin-bottom: 0.42666667rem;
+}
+.messageUl li {
+  padding: 0.42666667rem 0;
+}
+.messageUl li .messageLeft {
+  float: left;
+}
+.messageUl li .messageLeft img {
+  height: 2.13333333rem;
+  width: 2.13333333rem;
+}
+.messageUl li .messageRight {
+  float: right;
+  width: 11.94666667rem;
+}
+.messageUl li .messageRight .messageRightUp {
+  position: relative;
+}
+.messageUl li .messageRight .messageRightUp h3 {
+  line-height: 0.96rem;
+  height: 0.96rem;
+  font-size: 0.64rem;
+  font-weight: normal;
+}
+.messageUl li .messageRight .messageRightUp p {
+  line-height: 0.96rem;
+}
+.messageUl li .messageRight .messageRightBob {
+  padding: 0.21333333rem 0;
+  line-height: 0.85333333rem;
+}
+.anniuBox span {
+  border: solid 1px #909090;
+  padding: 0.10666667rem 0.21333333rem;
+  margin-right: 0.21333333rem;
+  border-radius: 0.10666667rem;
+  display: inline-block;
+  margin-bottom: 0.21333333rem;
+}
+.anniuBox span.active {
+  background-color: #038fff;
+  color: #fff;
+  border-color: #038fff;
+}
+.info-top {
+  height: 4.26666667rem;
+  background-color: #038fff;
+}
+.info-top .infoTop {
+  width: 2.56rem;
+  height: 2.56rem;
+  border-radius: 50%;
+  float: left;
+  margin: 0.85333333rem 0.64rem 0 0.85333333rem;
+}
+.info-top .info-title {
+  float: left;
+  width: 11.30666667rem;
+  color: #fff;
+  position: relative;
+}
+.info-top .info-title h2 {
+  font-size: 0.68266667rem;
+  height: 0.96rem;
+  line-height: 0.96rem;
+  padding-top: 1.28rem;
+}
+.info-top .info-title p {
+  line-height: 30px;
+}
+.info-top .info-title .infoIco {
+  font-size: 1.28rem;
+  position: absolute;
+  right: 0.64rem;
+  top: 1.49333333rem;
+}
+.info-top .info-title .infoIco i {
+  font-size: 0.74666667rem;
+  font-style: normal;
+  color: #fff;
+  float: left;
+  line-height: 1.38666667rem;
+}
+.info-list {
+  box-sizing: border-box;
+  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
+  background-color: #fff;
+}
+.info-list li {
+  height: 1.81333333rem;
+  line-height: 1.81333333rem;
+}
+.info-list li .info-list-ico {
+  width: 2.13333333rem;
+  float: left;
+  text-align: center;
+  font-size: 1.06666667rem;
+}
+.info-list li .info-list-rr {
+  float: left;
+  width: 13.86666667rem;
+  position: relative;
+}
+.info-list li .info-list-rr p {
+  font-size: 0.64rem;
+}
+.info-list li .info-list-rr span {
+  position: absolute;
+  right: 0.64rem;
+  top: 0rem;
+  font-size: 0.64rem;
+  color: #c7c7cc;
+}
+.collectionUl {
+  background-color: #fff;
+}
+.collectionUl li {
+  overflow: hidden;
+  padding: 0.32rem 0;
+  margin: 0 0.32rem;
+}
+.collectionUl li .collectionLL {
+  box-sizing: border-box;
+  float: left;
+  width: 2.13333333rem;
+  height: 2.13333333rem;
+}
+.collectionUl li .collectionLL img {
+  width: 100%;
+  height: 100%;
+}
+.collectionUl li .collectionRR {
+  box-sizing: border-box;
+  padding-left: 0.64rem;
+  float: left;
+  width: 13.22666667rem;
+}
+.collectionUl li .collectionRR h3 {
+  font-size: 0.34133333rem;
+  line-height: 0.85333333rem;
+}
+.collectionUl li .collectionRR h3 a {
+  float: right;
+}
+.collectionUl li .collectionRR p {
+  font-size: 0.29866667rem;
+  padding-top: 0.21333333rem;
+}
+.collectionUl li .collectionRR .collectionBB {
+  text-align: right;
+}
+.collectionUl li .collectionRR .collectionBB span {
+  font-size: 0.256rem;
+  padding-right: 0.21333333rem;
+}
+.collectionUl li .collectionRR .collectionBB span i {
+  padding-right: 0.10666667rem;
+}
+.authentication-top {
+  height: 6.4rem;
+  width: 100%;
+  background-color: #038fff;
+}
+.specialtyBox {
+  background-color: #fff;
+  height: 100%;
+}
+.hobbyBox span {
+  padding: 0.10666667rem 0.32rem;
+  border: solid 1px #038fff;
+  margin-top: 0.17066667rem;
+  border-radius: 0.32rem;
+  display: block;
+  float: left;
+  margin-right: 0.42666667rem;
+}
+.uplognr {
+  text-align: center;
+  padding-top: 0.64rem;
+}
+.uplogTitle {
+  text-align: center;
+  font-size: 0.64rem;
+  font-weight: normal;
+  padding-top: 0.42666667rem;
+}
+.textareaBox {
+  width: 14.72rem;
+  margin-left: 0.64rem;
+}
+.textareaBox .textarea {
+  border: solid 1px #eaeaea;
+  width: 100%;
+  min-height: 6.4rem;
+  border-radius: 0.21333333rem;
+  margin: 0.64rem 0;
+}
+.autherH1 {
+  text-align: center;
+  padding: 0.64rem 0;
+  font-size: 0.85333333rem;
+}
+.list-auther li {
+  float: left;
+  width: 4.48rem;
+  height: 3.2rem;
+  margin: 0.42666667rem;
+  background-color: #007AFF;
+  border-radius: 0.42666667rem;
+  overflow: hidden;
+}
+.list-auther li .addJiaText {
+  text-align: center;
+  color: #fff;
+}
+.list-auther li .addJia {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.soucUl li {
+  margin-top: 0.64rem;
+  border-top: solid 1px #d9d9d9;
+  background-color: #fff;
+}
+.soucUl li .souUp {
+  padding: 0 0.64rem;
+}
+.soucUl li .souUp h2 {
+  font-size: 0.74666667rem;
+  height: 1.70666667rem;
+  line-height: 1.70666667rem;
+  border-bottom: solid 0.10666667rem #038fff;
+  font-weight: normal;
+}
+.soucUl li .souUp a {
+  float: right;
+}
+.soucUl li .souUp a span {
+  font-size: 1.06666667rem;
+}
+.soucUl li .souUp a i {
+  font-style: normal;
+  font-size: 0.74666667rem;
+}
+.soucUl li .souBox {
+  padding: 0 0.64rem;
+  margin: 0.64rem 0;
+}
+.soucUl li .souBox img {
+  float: left;
+  height: 2.77333333rem;
+  width: 2.77333333rem;
+}
+.soucUl li .souBox .souBoxText {
+  float: right;
+  width: 11.30666667rem;
+  font-size: 0.64rem;
+  padding-left: 0.42666667rem;
+}
+.soucUl li .souBox .btnA {
+  height: 1.17333333rem;
+  line-height: 1.17333333rem;
+  padding: 0 0.42666667rem;
+  background-color: #fc7b53;
+  display: inline-block;
+  color: #fff;
+  border-radius: 0.10666667rem;
+  float: right;
+}
+.mesList li,
+.zjUl li {
+  margin-top: 0.64rem;
+  background: #fff;
+  padding: 0 0.64rem;
+}
+.mesList li h2,
+.zjUl li h2 {
+  line-height: 1.38666667rem;
+  height: 1.38666667rem;
+  font-size: 0.74666667rem;
+  border-bottom: solid 0.10666667rem #038fff;
+  font-weight: normal;
+  margin-bottom: 0.64rem;
+}
+.mesList li .mesLeft,
+.zjUl li .mesLeft {
+  float: left;
+}
+.mesList li .mesLeft img,
+.zjUl li .mesLeft img {
+  height: 2.13333333rem;
+  width: 2.13333333rem;
+}
+.mesList li .mesRight,
+.zjUl li .mesRight {
+  float: right;
+  width: 11.94666667rem;
+}
+.mesList li .mesRight .mesRightUp,
+.zjUl li .mesRight .mesRightUp {
+  position: relative;
+}
+.mesList li .mesRight .mesRightUp h3,
+.zjUl li .mesRight .mesRightUp h3 {
+  line-height: 0.96rem;
+  height: 0.96rem;
+  font-size: 0.64rem;
+  font-weight: normal;
+}
+.mesList li .mesRight .mesRightUp .mesIco,
+.zjUl li .mesRight .mesRightUp .mesIco {
+  font-size: 1.06666667rem;
+  position: absolute;
+  right: 0;
+  top: 0.32rem;
+}
+.mesList li .mesRight .mesRightBob,
+.zjUl li .mesRight .mesRightBob {
+  padding: 0.21333333rem 0 0.64rem;
+  border-bottom: solid 1px #909090;
+}
+.mesList li .mesRight .mesHui,
+.zjUl li .mesRight .mesHui {
+  background-color: #dfdfdf;
+  border-radius: 0.10666667rem;
+  margin: 0.64rem 0;
+  padding: 0.32rem;
+}
+.mesList li .mesRight .mesHui p,
+.zjUl li .mesRight .mesHui p {
+  line-height: 0.85333333rem;
+}
+.list li {
+  padding: 0.64rem 0.85333333rem;
+  border-bottom: solid 1px #d9d9d9;
+}
+.list li h2 {
+  font-size: 0.74666667rem;
+  font-weight: normal;
+  padding-bottom: 0.42666667rem;
+}
+.list li p {
+  line-height: 0.96rem;
+}
+.listSearch {
+  height: 2.13333333rem;
+}
+.listUl li {
+  background-color: #fff;
+  padding: 0.42666667rem 0.64rem;
+  margin-bottom: 0.42666667rem;
+}
+.listUl li .listUp h2 {
+  font-size: 0.74666667rem;
+  font-weight: normal;
+  float: left;
+  height: 1.49333333rem;
+  line-height: 1.49333333rem;
+}
+.listUl li .listUp > img {
+  width: 1.28rem;
+  float: right;
+}
+.listUl li .listText {
+  padding: 0.32rem 0;
+  line-height: 0.85333333rem;
+}
+.listUl li .listImg {
+  width: 100%;
+}
+.listUl li .listFan {
+  padding: 0.42666667rem 0;
+}
+.listUl li .listFan .listFanLl {
+  float: left;
+}
+.listUl li .listFan .listFanRr {
+  float: right;
+}
+.listUl li .listBtm {
+  font-size: 0.64rem;
+  height: 1.28rem;
+  line-height: 1.28rem;
+}
