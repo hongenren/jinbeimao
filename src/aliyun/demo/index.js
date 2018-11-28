@@ -91,7 +91,7 @@ smsClient.queryDetail({
 function send(phonenum,yzm){
 smsClient.sendSMS({
     PhoneNumbers: phonenum,
-    SignName: '任洪恩',
+    SignName: '',
     TemplateCode: 'SMS_137415267',
     TemplateParam: `{"code":${yzm}}`
 }).then(function (res) {
@@ -120,7 +120,7 @@ app.post('/register',(req,res)=>{
     var phone=req.query.phone;
     var pass=req.query.pass;
     console.log(req.query)
-	
+
 	if(id==1){
 		suiji()
 		console.log(yzmcode)
@@ -129,8 +129,8 @@ app.post('/register',(req,res)=>{
         var yzm=req.query.sjyzm;
         console.log(yzm)
 		var pass=req.query.pass;
-		if(yzm==yzmcode){	
-            // console.log(req.query)		
+		if(yzm==yzmcode){
+            // console.log(req.query)
 			mongodb.connect(db_str,(err,database)=>{
 				database.collection('info',(err,coll)=>{
                     coll.find({phone:phone}).toArray((err,data)=>{
@@ -139,23 +139,23 @@ app.post('/register',(req,res)=>{
                             // 已经注册过
                         }else{
                             coll.save({phone:phone,pass:pass},()=>{
-                                
+
                                 res.send('1')
                                 // 注册成功
                             })
                         }
                         database.close()
                     })
-					
+
 				})
-			})	
+			})
 		}else{
             res.send('3')
             //验证码错误
 		}
-		
-		
-	}		
+
+
+	}
 })
 
 
@@ -194,7 +194,7 @@ app.post('/yzmdl',(req,res)=>{
     }else{
         var yzm=req.query.sjyzm;
         var phone=req.query.phone;
-        if(yzm==yzmcode){	
+        if(yzm==yzmcode){
             mongodb.connect(db_str,(err,database)=>{
                 database.collection('info',(err,coll)=>{
                     coll.find({phone:phone}).toArray((err,data)=>{
@@ -219,11 +219,11 @@ app.post('/yzmdl',(req,res)=>{
 })
 
 app.get('/shouye',(req,res)=>{
-   
+
     mongodb.connect(db_str,(err,database)=>{
         database.collection('shuju',(err,coll)=>{
             coll.find({}).toArray((err,data)=>{
-               
+
                 if(data.length>0){
                     res.send(data)
                     database.close()
@@ -267,7 +267,7 @@ app.get('/gouma',(req,res)=>{
     mongodb.connect(db_str,(err,database)=>{
         database.collection('goumai',(err,coll)=>{
             coll.save(req.query)
-           database.close() 
+           database.close()
         })
     })
 })
