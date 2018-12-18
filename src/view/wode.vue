@@ -1,21 +1,21 @@
 <template>
     <div class="wode">
         <!-- 头部 -->
-        
+
         <div class="wotop">
             <div class="xiaomao">
                 <div class="person">
 
-               
+
                   <span class="xiaomaopic">
                       <img style="width:35px;height:35px;vertical-align: middle;" src="../img/img.png" alt="">
-                 
+
                   </span>
                   <span class="phone">
                     {{name}}
-                 
+
                   </span>
-                   
+
                 </div>
                 <div class="setup">
                     <span class="qiandao">
@@ -69,89 +69,89 @@
         <div class="wodebot">
             <ul>
                 <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-jiekuanxianxing"></span>
-                            <router-link style="color:black;font-size:14px;" tag="span" to="/gmjl">购买记录</router-link> 
+                            <router-link style="color:black;font-size:14px;" tag="span" to="/gmjl">购买记录</router-link>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
 
 
 
                 <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-qian"></span>
                             <span style="color:black;font-size:14px;">回款记录</span>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
                 <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-tubiaolunkuo-"></span>
                             <span style="color:black;font-size:14px;">我的银行卡</span>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
                 <!-- 优惠卷 -->
                <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-wodeyouhuijuan"></span>
                             <span style="color:black;font-size:14px;">我的卡卷</span>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
 
                <!-- 邀请好友 -->
                 <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-yaoqinghaoyou"></span>
                             <span style="color:black;font-size:14px;">邀请好友</span>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
                <!-- 推荐奖励 -->
                 <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-tuijiandaorenmai"></span>
                             <span style="color:black;font-size:14px;">推荐奖励</span>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
                 <!-- 汇款日历 -->
                 <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-rili"></span>
                             <span style="color:black;font-size:14px;">汇款日历</span>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
                 <!-- 我的积分 -->
                 <li class="cjjl">
-                    
+
                         <p class="left">
                             <span style="font-size:20px;margin-right:10px;" class="iconfont icon-wodejifen01"></span>
                             <span style="color:black;font-size:14px;">我的积分</span>
                         </p>
                         <p class="right" style="font-size:28px;color:#d0d0d0;"> &gt; </p>
-                    
+
                 </li>
             </ul>
             <!--  -->
-                    
+
                     <div class="dianhua">
                         <span class="iconfont icon-76" style="color:#b0b0b0;font-size:20px;"></span>
                         <span style="color:#ff5555;font-size:14px;">400&nbsp;021&nbsp;7688</span>
@@ -204,27 +204,28 @@ export default {
     },
 
     mounted(){
+      console.log(this.str)
         if(this.str==""){
             this.$router.push('/sjhdl')
         }else{
             this.$router.push('/wode')
         }
-   
-    
+
+
        var _this = this
     axios('http://localhost:3000/wode',{
         method:'get',
         headers:{
                 'Content-type': 'application/x-www-form-urlencoded'
             },
-        params:{phone:_this.str}    
+        params:{phone:_this.str}
     }).then(function(data){
         console.log(data.data)
         _this.qian=(data.data)[0]
     })
 
 
-  }  
+  }
 
 }
 </script>
@@ -239,7 +240,7 @@ export default {
 .wotop{
     height:250px;
     background: #8bb0d6;
-    
+
 }
 .xiaomao{
     height: 50px;
@@ -264,7 +265,7 @@ export default {
     border: 1px solid #dff2fc;
     background: #ffffff;
     border-radius: 50%;
-    
+
 }
 
 .setup{
@@ -287,12 +288,12 @@ export default {
 .shezhi{
     font-size: 30px;
     color: #ffffff;
-    
+
 }
 .zjc{
     text-align: center;
     color: #ffffff;
-    font-size: 14px;    
+    font-size: 14px;
 }
 .jinqian{
     color: #ffffff;
@@ -307,7 +308,7 @@ export default {
     display: flex;
     justify-content: space-around;
     color: #ffffff;
-    
+
 }
 .djje{
     text-align: center;
@@ -338,7 +339,7 @@ export default {
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
-   
+
 }
 
 </style>

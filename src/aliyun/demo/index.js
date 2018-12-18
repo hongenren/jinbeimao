@@ -124,7 +124,7 @@ app.post('/register',(req,res)=>{
 	if(id==1){
 		suiji()
 		console.log(yzmcode)
-		send(phone,yzmcode)
+		// send(phone,yzmcode)
 	}else{
         var yzm=req.query.sjyzm;
         console.log(yzm)

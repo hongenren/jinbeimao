@@ -25,32 +25,59 @@
     <div id="box">
         <input type="text" v-model="message">
         {{message}}
+        {{text}}
     </div>
     <div>
       你好呀
     </div>
+    <div>
+       发不发呢只
+    </div>
+    <div>
+      tuisong推送
+    </div>
 </body>
 <script>
-class Vue {
-  constructor (options={}) {
-    //这里简化了。。其实要merge
-    this.$options=options
-    //这里简化了。。其实要区分的
-    let data = this._data=this.$options.data
-    console.log(data)
-  }
+  class Vue {
+      constructor(options) {
+        this.$options = options
+        this._data = options.data
+        observer(options.data, this._update)
+        this._update()
+      }
+      _update(){
+        this.$options.render()
+      }
+    }
 
 
+    function observer(value, cb){
+      Object.keys(value).forEach((key) => defineReactive(value, key, value[key] , cb))
+    }
 
-}
+    function defineReactive(obj, key, val, cb) {
+      Object.defineProperty(obj, key, {
+        enumerable: true,
+        configurable: true,
+        get: ()=>{},
+        set:newVal=> {
+          cb()
+        }
+      })
+    }
 
-</script>
-<script>
-new Vue({
-  el:"#box",
-  data:{
-    message:"hello"
-  }
-})
+    var demo = new Vue({
+      el: '#demo',
+      data: {
+        text: 123,
+      },
+      render(){
+        console.log("我要render了")
+      }
+    })
+
+    //  setTimeout(function(){
+    //    demo._data.text = 444
+    //  }, 3000)
 </script>
 </html>
