@@ -1,34 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- import CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 <body>
-  <div id="app">
-    <el-button @click="visible = true">Button</el-button>
-    <el-dialog :visible.sync="visible" title="Hello world">
-      <p>Try Element</p>
-    </el-dialog>
-    <el-tag>标签一</el-tag>
-    <el-tag type="success">标签二</el-tag>
-    <el-tag type="info">标签三</el-tag>
-    <el-tag type="warning">标签四</el-tag>
-    <el-tag type="danger">标签五</el-tag>
-  </div>
-
+  
 </body>
-  <!-- import Vue before Element -->
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <!-- import JavaScript -->
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      data: function() {
-        return { visible: false }
-      }
-    })
-  </script>
+<script>
+var data = ['法国','澳大利亚','智利','新西兰','西班牙','加拿大','阿根廷','美国','0','国产','波多黎各','英国','比利时','德国','意大利','意大利',];
+var result = [];
+for(var i=0,len=data.length;i<len;i+=3){
+    result.push(data.slice(i,i+3));
+}
+console.log(result);
+
+</script>
 </html>

@@ -1,27 +1,13 @@
 <template>
   <el-carousel indicator-position="outside">
-    <el-carousel-item>
+    <el-carousel-item v-for="item in result">
       <div class="recommend">
             <!--<span class="more"><a href="">更多&gt;</a></span>-->
-            <div class="item" v-for="item in 3" :key="item.id">
-              {{item}}
-                <img :src="shuzu[item].url" alt="">
+            <div class="item" v-for="index in item" > 
+                <img :src="index.url" alt="">
                 <dl>
-                    <dt>{{shuzu[item].id}}</dt>
-                    <dd>{{shuzu[item].info}}</dd>
-                </dl>
-            </div>
-        </div>
-    </el-carousel-item>
-    <el-carousel-item>
-      <div class="recommend">
-            <!--<span class="more"><a href="">更多&gt;</a></span>-->
-            <div class="item" v-for="item in 3" :key="item.id">
-              {{item}}
-                <img :src="shuzu[item+3].url" alt="">
-                <dl>
-                    <dt>{{shuzu[item+3].id}}</dt>
-                    <dd>{{shuzu[item+3].info}}</dd>
+                    <dt>{{index.id}}</dt>
+                    <!-- <dd>{{item[index].info}}</dd> -->
                 </dl>
             </div>
         </div>
@@ -68,7 +54,19 @@
             id: 7,
             url: require('../../img/5.png')
           }
-        ]
+        ],
+        result: []
+      }
+    },
+    mounted() {
+      this.fenzu();
+      console.log(this.result);
+    },
+    methods: {
+      fenzu () {
+        for(var i=0,len=this.shuzu.length;i<len;i+=3){
+           this.result.push(this.shuzu.slice(i,i+3));
+        }
       }
     },
   }
@@ -94,7 +92,9 @@
         }
         .item{
             float: left;
-            width: 200px;
+            width: 150px;
+            height: 280px;
+            margin: 40px;
             overflow: hidden;
             margin-right: 20px;
             text-align: center;
