@@ -12,6 +12,8 @@
   "dependencies": {
     "element-ui": "^2.4.6",
     "mint-ui": "^2.2.13",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -29,7 +31,7 @@
     "body-parser": "^1.18.3",
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.0",
+    "css-loader": "^0.28.11",
     "express": "^4.16.4",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",

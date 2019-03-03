@@ -24,7 +24,7 @@ import fom from '@/view/fom'
 import foma from '@/view/foma'
 import fomb from '@/view/fomb'
 import fomc from '@/view/fomc'
-import lianxi from '@/view/lianxi'
+import one from '@/view/lianxi/one'
 
 
 
@@ -72,9 +72,9 @@ export default new Router({
 
     },
     {
-      path: '/lianxi',
+      path: '/one',
 
-      component: lianxi,
+      component: one,
 
 
     },
