@@ -25,6 +25,13 @@ import foma from '@/view/foma'
 import fomb from '@/view/fomb'
 import fomc from '@/view/fomc'
 import one from '@/view/lianxi/one'
+import fomd from '@/view/fomd'
+import fome from '@/view/fome'
+import fomf from '@/view/fomf'
+import fomg from '@/view/fomg'
+import fomh from '@/view/fomh'
+
+import lianxi from '@/view/lianxi'
 
 
 
@@ -51,16 +58,58 @@ export default new Router({
     },
 
     {
-      path: '/fomb',
+      path: '/foma',
 
-      component: fomb,
+      component: foma,
 
 
     },
     {
+      path: '/fomb',
+      name:fomb,
+      component: fomb,
+
+
+    },
+        {
       path: '/fomc',
       name:fomc,
       component: fomc,
+
+
+    },
+        {
+      path: '/fomd',
+      name:fomd,
+      component: fomd,
+
+
+    },
+        {
+      path: '/fome',
+      name:fome,
+      component: fome,
+
+
+    },
+        {
+      path: '/fomf',
+      name:fomf,
+      component: fomf,
+
+
+    },
+    {
+      path: '/fomg',
+      name:fomg,
+      component: fomg,
+
+
+    },
+    {
+      path: '/fomh',
+      name:fomh,
+      component: fomh,
 
 
     },
