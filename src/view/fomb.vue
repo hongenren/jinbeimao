@@ -36,7 +36,7 @@ import foma from './foma.vue'
         to.meta.keepAlive = true;  // B 跳转到 A 时，让 A 缓存，即不刷新
         next();
     },
-      beforeDestroy() {
+     beforeDestroy() {
             console.log("Test destroy");
         }
 
