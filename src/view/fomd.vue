@@ -1,6 +1,6 @@
 <template>
   <div class="echarts">
-    <div :style="{height:'400px',width:'100%'}" ref="myEchart"></div>
+    <div :style="{height:'900px',width:'100%'}" ref="myEchart"></div>
   </div>
 </template>
 <script>
@@ -29,7 +29,11 @@
       chinaConfigure() {
         console.log(this.userJson)
         let myChart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置
+        console.log(this.$refs.myEchart);
+        console.log(echarts.init);
+
         window.onresize = myChart.resize;
+        console.log(myChart.setOption);
         myChart.setOption({ // 进行相关配置
           backgroundColor: "#02AFDB",
           tooltip: {}, // 鼠标移到图里面的浮动提示框
@@ -55,7 +59,7 @@
             },
             itemStyle: {
               normal: {
-                borderColor: 'rgba(0, 0, 0, 0.2)'
+                borderColor: 'rgba(0, 0, 0, 0.2)' // 边界
               },
               emphasis: {
                 areaColor: null,
@@ -63,7 +67,7 @@
                 shadowOffsetY: 0,
                 shadowBlur: 20,
                 borderWidth: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                shadowColor: 'rgba(0, 0, 0, 0.5)' // 选中
               }
             }
           },

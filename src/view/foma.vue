@@ -32,7 +32,8 @@
   }
  },
  mounted () {
-   console.log(this.message)
- }
+  //  console.log(this.message)
+ },
+
  }
 </script>
