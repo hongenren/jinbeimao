@@ -7,15 +7,29 @@
   <title>Document</title>
 </head>
 <body>
-  
+  修改了一条记录
 </body>
 <script>
-var data = ['法国','澳大利亚','智利','新西兰','西班牙','加拿大','阿根廷','美国','0','国产','波多黎各','英国','比利时','德国','意大利','意大利',];
-var result = [];
-for(var i=0,len=data.length;i<len;i+=3){
-    result.push(data.slice(i,i+3));
-}
-console.log(result);
+var myObject = { };
+Object.defineProperty(
+myObject,
+"a",
+// 让 a 像普通属性一样可以枚举
+{ enumerable: true, value: 2 }
+);
+Object.defineProperty(
+myObject,
+"b",
+// 让 b 不可枚举
+{ enumerable: false, value: 3 }
+);
+myObject.propertyIsEnumerable( "a" ); // true
+console.log(myObject.propertyIsEnumerable( "a" ));
+console.log(myObject.propertyIsEnumerable( "b" ));
+myObject.propertyIsEnumerable( "b" ); // false
+Object.keys( myObject ); // ["a"]
+console.log(Object.keys( myObject ));
+Object.getOwnPropertyNames( myObject ); // ["a", "b"]
 
 </script>
 </html>
