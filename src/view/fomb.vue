@@ -4,7 +4,7 @@
 {{zi}}
    <router-link to="/fom">1a</router-link>
   <h1 @click="bian()">点击前进</h1>
-  
+
   <foma></foma>
   </div>
 </template>
@@ -18,16 +18,16 @@ import foma from './foma.vue'
 	  },
     data(){
       return{
-    
+
         zi:""
       }
     },
     methods:{
         bian(){
-        
+
     this.$router.go(1)
-  
-    
+
+
   }
 
     },
@@ -36,8 +36,11 @@ import foma from './foma.vue'
         to.meta.keepAlive = true;  // B 跳转到 A 时，让 A 缓存，即不刷新
         next();
     },
+     beforeDestroy() {
+            console.log("Test destroy");
+        }
 
- 
+
   }
 </script>
 
