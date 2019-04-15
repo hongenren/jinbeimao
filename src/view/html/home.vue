@@ -4,18 +4,11 @@
         <div class="kv" :style='"background-image: url(" + bgimage.banner + ")"'>
             <div class="search">
                 <h3>找仓储</h3>
-                <form action="javascript:;">
+                <form action="javascript:">
                     <div class="gy-form">
                         <div class="gy-form-group">
                             <span class="l">货物名称</span>
-                            <el-select v-model="nameValue" placeholder="请选择">
-                                <el-option
-                                  v-for="item in nameList"
-                                  :key="item.id"
-                                  :label="item.value"
-                                  :value="item.id">
-                                </el-option>
-                            </el-select>
+                            <NewComponent :name-list="nameList" :name-value="nameValue"/>
                         </div>
                         <div class="gy-form-group">
                             <span class="l">城市</span>
@@ -281,9 +274,8 @@ export default {
             console.log(value);
         }
     }
-};
 </script>
-<style lang="">
+<style lang="scss">
       .kv{
         background-position: center center;
         background-size: cover;

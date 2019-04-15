@@ -1,8 +1,12 @@
 <template>
     <div class="cjjl">
         <h1>出借记录</h1>
+
     </div>
-</template>     
+    <div>
+        你是黑奥拉夫焦磷酸钠个拉萨改变吗， 水电费来看你，是的佛您好地方，三经官动府
+    </div>
+</template>
 
 <script>
 export default {
@@ -26,7 +30,7 @@ export default {
                 var data=(data.data)[0]
                 _this.detail=data
             })
-        
+
     }
 
 }
