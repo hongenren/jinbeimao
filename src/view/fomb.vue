@@ -4,7 +4,12 @@
 {{zi}}
    <router-link to="/fom">1a</router-link>
   <h1 @click="bian()">点击前进</h1>
-
+<div v-if="type===1">
+  foma
+</div>
+<div v-if="type===2">
+  fomc
+</div>
   <foma></foma>
   </div>
 </template>
@@ -19,7 +24,8 @@ import foma from './foma.vue'
     data(){
       return{
 
-        zi:""
+        zi:"",
+        type: ""
       }
     },
     methods:{
@@ -30,6 +36,10 @@ import foma from './foma.vue'
 
   }
 
+    },
+    created() {
+      console.log(this.$route.query);
+      this.type = this.$route.query.ordertype;
     },
     beforeRouteLeave(to, from, next) {
          // 设置下一个路由的 meta

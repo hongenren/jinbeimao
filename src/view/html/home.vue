@@ -8,7 +8,14 @@
                     <div class="gy-form">
                         <div class="gy-form-group">
                             <span class="l">货物名称</span>
-                            <NewComponent :name-list="nameList" :name-value="nameValue"/>
+                            <el-select v-model="nameValue" placeholder="请选择" value="">
+                                <el-option
+                                  v-for="item in nameList"
+                                  :key="item.id"
+                                  :label="item.value"
+                                  :value="item.id">
+                                </el-option>
+                            </el-select>
                         </div>
                         <div class="gy-form-group">
                             <span class="l">城市</span>

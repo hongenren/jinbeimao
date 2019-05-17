@@ -1,35 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+<html>
 <body>
-  修改了一条记录
-</body>
+ 
+<canvas id="myCanvas" width="900" height="950">
+</canvas>
+ 
 <script>
-
-var a = [
-    {name : "zhangsan"},
-    {name : "李四"},
-    {name : "网二"},
-    {name : "李留"},
-    {name : "彰武"},
-    {name : "什么"},
-];
-    var b = "彰武"
-    if (a.length !== 0) {
-      var c=  a.filter(function (item) {
-            return item.name == b
-        })
-    }
-    console.log(c);
-    if (c.length !== 0) {
-        console.log('you这个id')
-    } else  {
-        console.log("没有这个id")
-    }
+ 
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ 
+//Turn transparency on
+ctx.globalAlpha=0;
 </script>
+ 
+</body>
 </html>
