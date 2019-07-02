@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=自己的密钥"></script>自己申请的密钥 分为浏览器端和服务端 -->
+    <script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=b4DGjmRcKL2uZDHY2cKoa5j8qOxCB9s9&s=1"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>设置地图显示范围js文件
+    <!-- <script type="text/javascript" src="js/echarts.min.js"></script> -->
+    <title>设置地图显示范围并实现多点标注</title>
+</head>
+<style>
+.map{width:67.2%;height:90%;float:left;margin-right:1%;margin-left:1%;border:1px solid #464646;position:relative;}
+#allmap{width:100%;height:100%;}
+
+</style>
 <body>
- 
-<canvas id="myCanvas" width="900" height="950">
-</canvas>
- 
-<script>
- 
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
- 
-//Turn transparency on
-ctx.globalAlpha=0;
-</script>
- 
+    <div class="map">
+        <div id="allmap"></div>
+    <div>
 </body>
 </html>
+<script type="text/javascript" src="js/wxzz.js"></script>
