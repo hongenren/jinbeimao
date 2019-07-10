@@ -174,7 +174,10 @@ var vm = new Vue({
             },
             methods: {
                 play () {
-                    setInterval(this.top--, 100);
+                    let demo = document.getElementsByClassName('table-jc')[0];
+                    setInterval(function(){
+                        demo.scrollTop++
+                    },10)
                 },
                 drawLine () {
                     let myChart = echarts.init(document.getElementById('myChart'));
