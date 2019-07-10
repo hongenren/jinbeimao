@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>医院</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app">    
+    <div class="supervise-warp">
+		<div class="supervise">
+			<h1 class="title">
+				四川卫生监督综合在线监管系统
+			</h1>
+			<div class="header">
+				<div class="fl">2019年7月1号11：08星期二</div>
+				<div class="fr">进入管理退出</div>
+			</div>
+			<div class="navbar">
+				<ul>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+				</ul>
+			</div>
+			<div class="maincontent">
+				<div class="main-left fl">
+					<div class="medical-box">
+						<div class="title1">医废收集总量统计</div>
+						<ul>
+							<li>总重量：106.69</li>
+							<li>总包次：69</li>
+						</ul>
+						<div id="myChart" style="width: 100%;height:200px;"></div>
+					</div>
+					<div class="medical-box">
+                        <div class="title1">监测点医废收集统计</div>
+                        <div class="table-box">
+                            <table class="yf-table">
+                                <thead>
+                                    <th>名字</th>
+                                    <th>数量</th>
+                                    <th>数量</th>
+                                    <th>数量</th>
+                                    <th>数量</th>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item, index) in 5" ::key="index">
+                                        <td>{{item}}</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+					</div>
+					<div class="medical-box">
+						<div class="title1">医废收集总量统计</div>
+						<ul>
+							<li>总重量：106.69</li>
+							<li>总包次：69</li>
+                        </ul>
+                        <div class="myChart1box">
+                            <div id="myChart1" style="width: 100%;height:200%;"></div>
+                        </div>
+					</div>
+				</div>
+				<div class="main-center">
+					<div class="fome">
+                        <div class="warp">
+                        <ul class="maptype">
+                            <li><span style="background:green;"></span>正常</li>
+                            <li><span style="background:red;"></span>异常</li>
+                        </ul>
+                        <div id="allmap" ref="allmap"></div>
+                        </div>
+                    </div>
+                    <div class="abnormal">
+                        <div class="title1">医废收集总量统计</div>
+                        <ul>
+                            <li class="abnormali">
+                                <div class="infirmary fl">四川肿瘤医院</div>
+                                <div class="time fl">2018-10-9:10:20</div>
+                                <div class="violation fr">违规交接预警<span>未处理</span></div>
+                            </li>
+                        </ul>
+                    </div>
+				</div>
+				<div class="main-right fr">
+                    <div class="title1">医废收集总量统计</div>
+                    <div class="table-jc" :style='"top:" + top + "px;"' class="anim">
+                        <table class="jcsj" v-for="(item, index) in Company" :key="index">
+                            <tbody>
+                                <tr><td colspan="4">医院名称：拉丝粉阿萨德{{index}}</td></tr>
+                                <tr><td colspan="4">科室：拉丝粉阿萨德</td></tr>
+                                <tr><td colspan="4">条形表示：拉丝粉阿萨德</td></tr>
+                                <tr>
+                                    <td>废物类型</td>
+                                    <td>废物类型</td>
+                                    <td>废物类型</td>
+                                    <td>废物类型</td>
+                                </tr>
+                                <tr>
+                                    <td>废物类型</td>
+                                    <td>废物类型</td>
+                                    <td>废物类型</td>
+                                    <td>废物类型</td>
+                                </tr>
+                                <tr><td colspan="4">收集时间：拉丝粉阿萨德</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>    
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=b4DGjmRcKL2uZDHY2cKoa5j8qOxCB9s9&s=1"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<script>
+var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    top: 0,
+                    newData: [],
+                    Company: ['1', '2', '3', '4', '2'],
+                    tupian1: './img/1.png',
+                    tupian2: './img/2.png',
+                    data_info: [
+                        [114.502461, 38.045474, "网站名称：市住房公积金;网站ip:192.168.1.100;网站URL:www.aaa.com;", 30],
+                        [120.153576, 29.287459, "网站名称：浙江省嘉兴市中学<br>网站ip:192.168.1.100<br>网站URL:www.ccc.com", 91],
+                        [120.750865, 30.762653, "网站名称：嘉兴经济技术开发区人力资源网", 70],
+                        [121.428599, 28.661378, "网站名称：嘉兴315维权网<br>网站ip:192.168.1.100<br>网站URL:www.jdin.com", 20],
+                        [120.153576, 30.287459, "网站名称：嘉兴旅游", 70],
+                        [120.205170, 30.25720, "网站名称：嘉兴市青少年宫", 92],
+                        [120.753576, 30.687459, "网站名称：嘉兴市公共交通总局", 55],
+                        [120.750865, 30.762653, "网站名称：嘉兴福利彩票", 35],
+                        [119.750865, 29.762653, "网站名称：嘉兴电视台", 15],
+                        [120.750865, 30.762653, "网站名称：市委老干部局", 95]
+                    ],
+                    options: [{
+                        value: 'L',
+                        label: 'L'
+                        }, {
+                        value: 'S',
+                        label: 'S'
+                        }, {
+                        value: '其他',
+                        label: '其他'
+                        }],
+                        value: []
+                    }
+            },
+            mounted () {
+                this.drawLine();
+                this.drawLine1();
+                this.map();
+                this.play();
+            },
+            methods: {
+                play () {
+                    setInterval(this.top--, 100);
+                },
+                drawLine () {
+                    let myChart = echarts.init(document.getElementById('myChart'));
+                    myChart.setOption({
+                        legend: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {},
+                        xAxis: {
+                            // name: '单位',
+                            type: 'category',
+                            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋"],
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            axisLabel: {
+                                color: '#fff'
+                            },
+                            axisTick: {
+                                show: true
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        yAxis: {
+                            // name: '数量',
+                            nameTextStyle: {
+                                color: '#fff'
+                            },
+                            type: 'value',
+                            minInterval: 1,
+                            splitLine: {
+                                show: true
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            axisTick: {
+                                inside: true
+                            },
+                            axisLabel: {
+                                color: '#fff'
+                            }
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series: [
+                            {
+                                name: '2011年',
+                                data: [5, 20, 36, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#66cdaa'
+                                }
+                            },
+                            {
+                                name: '2012年',
+                                data: [5, 20, 36, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#dcff3c'
+                                }
+                            }
+                        ]
+                    })
+                },
+                drawLine1 () {
+                    let myChart1 = echarts.init(document.getElementById('myChart1'));
+                    myChart1.setOption({
+                        legend: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {},
+                        grid: {left: '11%', right: '2%', bottom: '10%', containLable: true},
+                        yAxis: {
+                            // name: '单位',
+                            type: 'category',
+                            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋"],
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            axisLabel: {
+                                color: '#fff'
+                            },
+                            axisTick: {
+                                show: true
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        xAxis: {
+                            // name: '数量',
+                            nameTextStyle: {
+                                color: '#fff'
+                            },
+                            type: 'value',
+                            minInterval: 1,
+                            splitLine: {
+                                show: true
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            axisTick: {
+                                inside: true
+                            },
+                            axisLabel: {
+                                color: '#fff'
+                            }
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series: [
+                            {
+                                name: '2011年',
+                                data: [5, 20, 3, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#66cdaa'
+                                }
+                            },
+                            {
+                                name: '2012年',
+                                data: [5, 20, 6, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#dcff3c'
+                                }
+                            }
+                        ]
+                    })
+                },
+                map() {
+                    console.log(this.data_info);
+                    let map = new BMap.Map(this.$refs.allmap); // 创建Map实例 
+                    var point = new BMap.Point(116.404, 39.915);   
+                    map.centerAndZoom(point, 3); // 初始化地图,设置中心点坐标（经纬度/城市的名称）和地图级别 
+                       
+                    // map.addControl(new BMap.MapTypeControl({ //添加地图类型控件
+                    // 	type: BMAP_NAVIGATION_CONTROL_SMALL,
+                    // 	    mapTypes: [     BMAP_NORMAL_MAP,      BMAP_HYBRID_MAP    ]
+                    // }));   
+                    map.setCurrentCity("浙江"); // 设置地图显示的城市 此项是必须设置的 
+                       
+                    map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放 
+                    map.enableDoubleClickZoom();      //启用双击放大，默认启用
+                       
+                    map.setMapStyle({
+                        style: 'bluish'
+                    }); //地图风格
+                    var bdary = new BMap.Boundary();
+                    bdary.get('浙江省', function(rs) { //获取行政区域
+                        // map.clearOverlays(); //清除地图覆盖物
+                        var count = rs.boundaries.length; //行政区域的点有多少个
+                        for (var i = 0; i < count; i++) {
+                            var ply = new BMap.Polygon(rs.boundaries[i], {
+                                strokeWeight: 2,
+                                fillColor: "#00a75b",
+                                strokeColor: "#ff0000"
+                            }); //建立多边形覆盖物
+                            map.addOverlay(ply); //添加覆盖物
+                            map.setViewport(ply.getPath()); //调整视野
+                        }
+                        //'{"type":"Feature","id":"0","properties":{"name":"'+name+'"},"geometry":{"type":"Polygon","coordinates":[[[' + String().replace(';','],[') + ']]}}';
+                    });
+                    //处理模拟的数据
+                    for (var i = 0; i < this.data_info.length; i++) {
+                        // var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+                        var content = this.data_info[i][2];
+                        // console.log(series_data);
+                        var pt = new BMap.Point(this.data_info[i][0], this.data_info[i][1]);
+                        var myIcon = new BMap.Icon(this.tupian1, new BMap.Size(30, 30));
+                        var myIcon1 = new BMap.Icon(this.tupian2, new BMap.Size(30, 30));
+                        // var myIcon2 = new BMap.Icon("./html/images/3.png", new BMap.Size(30, 30));
+                        
+                        if (this.data_info[i][3] <= 40) {
+                            var marker2 = new BMap.Marker(pt, {
+                                icon: myIcon1
+                            });
+                            map.addOverlay(marker2);
+                            var label = new BMap.Label("3/5",{offset:new BMap.Size(0,0)});
+                            label.setStyle({
+                                color: "red",
+                                fontSize: "9px",
+                                backgroundColor: "0.05",
+                                border: "0",
+                                fontWeight: "bold"
+                            });
+                            marker2.setLabel(label);
+                            
+                            // marker2.setAnimation(BMAP_ANIMATION_BOUNCE);  // 会动
+                        } else if (this.data_info[i][3] >= 60 && this.data_info[i][3] < 80) {
+                            var marker2 = new BMap.Marker(pt, {
+                                icon: myIcon
+                            });
+                            map.addOverlay(marker2);
+                            var label = new BMap.Label("5/3",{offset:new BMap.Size(0,0)});
+                            label.setStyle({
+                                color: "red",
+                                fontSize: "9px",
+                                backgroundColor: "0.05",
+                                border: "0",
+                                fontWeight: "bold"
+                            });
+                            marker2.setLabel(label);
+                        }
+                    }
+                    // map.addEventListener("click", function(e) {
+                    // 	let point = new BMap.Point(e.point.lng, e.point.lat);
+                    // 	map.centerAndZoom(point, 16);
+                    // 	//(e.point.lng + ", " + e.point.lat)地图坐标
+                    // 	//("地图缩放至：" + this.getZoom() + "级")地图缩放级别
+                    // });
+                } 
+            }
+        })
+</script>
+</html>

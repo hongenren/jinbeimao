@@ -1,0 +1,226 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+address, cite, dfn, em, var { font-style:normal; }
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+small{ font-size:12px; }
+ul, ol { list-style:none; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+
+body{
+    background: url(../img/beijing.jpg)no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+html, body{
+    height: 100%;
+}
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width:10px;
+    border-radius:10px;
+    background-color: #1e439b;
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+    border-radius:10px;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius:10px;
+    background: #04a4b3;
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.supervise-warp{
+    height: 100%;
+	overflow: hidden;
+	font-size: 12px;
+}
+.supervise{
+    width: 98%;
+	margin: 0 auto;
+}
+.title{
+    margin-top: 20px;
+    color: #cca01e;
+    font-size: 30px;
+    text-align: center;
+}
+.header{
+    overflow: hidden;
+    padding: 0 20px;
+    color: #fff;
+}
+li{
+    float: left;
+    font-size: 14px;
+}
+.navbar{
+    margin-top: 10px;
+    overflow: hidden;
+}
+.navbar li{
+    font-size: 16px;
+    margin-right: 50px;
+    color: #FFD306;
+}
+.navbar li:first-child{
+    margin-left: 100px;
+}
+.maincontent{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.main-left{
+    width: 23%;
+    height: auto;
+}
+.title1{
+    font-size: 16px;
+    color: #fff;
+}
+.table-box{
+    height: 230px;
+    overflow-y: scroll;
+}
+.yf-table{
+    color: #fff;
+    width: 100%;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+
+}
+.yf-table tr{
+    border: 1px solid #fff;
+    height: 50px;
+}
+.yf-table td, th{
+    border: 1px solid #fff;
+    padding: 0 20px;
+}
+.medical-box{
+    padding-left: 5px;
+    margin-top: 10px;
+}
+.medical-box ul{
+    overflow: hidden;
+    margin: 10px 40px;
+}
+.medical-box li{
+    color: #fff;
+    margin-right: 20px;
+    background: #999;
+    border-radius: 5px;
+    padding: 5px;
+}
+.myChart1box{
+    height: 200px;
+    overflow-y: scroll;
+}
+.main-center{
+    float: left;
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 50%;
+    height: 500px;
+}
+/*设置地图的宽高*/
+.warp{
+	position: relative;
+}
+.maptype{
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	color: #fff;
+	z-index: 9999;
+}
+.maptype  li{
+	font-size: 14px;
+	list-style: none;
+}
+.maptype  span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+#allmap {
+	width:  100%;
+	height: 530px;
+	overflow: hidden;
+}
+
+.anchorBL {
+	display: none;
+}
+
+.BMap_cpyCtrl {
+	display: none;
+}
+/*  */
+.abnormal{
+    padding: 5px;
+}
+.abnormali{
+    overflow: hidden;
+    float: none;
+    padding: 5px 0;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    color: #fff;
+}
+.time{
+    margin-left: 200px;
+}
+.violation span{
+    margin: 0 5px;
+    display: inline-block;
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 12px;
+    background: #d9534f;
+}
+.main-right{
+    width: 23%;
+    overflow: hidden;
+}
+.table-jc{
+    overflow: hidden;
+    height: 800px;
+}
+.jcsj{
+    color: #fff;
+    width: 100%;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    margin-bottom: 10px;
+
+}
+.jcsj tr{
+    border: 1px solid #011c3c;
+    height: 30px;
+}
+.anim{
+    transition: all 1s;
+}

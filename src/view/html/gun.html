@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue实现无缝滚动</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+ 
+        #box {
+            width: 300px;
+            height: 124px;
+            line-height: 30px;
+            overflow: hidden;
+            padding-left: 30px;
+            border: 1px solid black;
+            transition: all 0.5s;
+        }
+ 
+        .scroll {
+            transition: all 0.5s;
+            margin-top: -34px;
+        }
+ 
+        #con1 li {
+            list-style: none;
+            line-height: 34px;
+            height: 34px;
+        }
+ 
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div id="app">
+        <div id="box">
+            <ul :class="{scroll:animate==true}">
+                <li v-for='(item,index) in items' :key="index" @click="item.active = !item.active" :class="{'active':item.active}">{{item.name}}</li>
+            </ul>
+        </div>
+    </div>
+ 
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                animate: false,
+                items: [{
+                        name: "1马云",
+                        active: false
+                    },
+                    {
+                        name: "2雷军",
+                        active: false
+                    },
+                    {
+                        name: "3张珊",
+                        active: false
+                    },
+                    {
+                        name: "4李思",
+                        active: false
+                    },
+                    {
+                        name: "5王武",
+                        active: false
+                    },
+                    {
+                        name: "6赵柳",
+                        active: false
+                    },
+                ]
+            },
+            mounted() {
+                setInterval(this.listScroll, 100);
+            },
+            methods: {
+                listScroll() {
+                    if (this.items.length >= 5) {
+                        this.animate = true
+                        setTimeout(() => {
+                            this.items.push(this.items[0]);
+                            this.items.shift();
+                            this.animate = false; // 这个地方如果不把animate 取反会出现消息回滚的现象，此时把ul 元素的过渡属性取消掉就可以完美实现无缝滚动的效果了
+                        }, 500)
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+ 
+</html>
