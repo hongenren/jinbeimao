@@ -379,55 +379,48 @@ var vm = new Vue({
                         }
                         //'{"type":"Feature","id":"0","properties":{"name":"'+name+'"},"geometry":{"type":"Polygon","coordinates":[[[' + String().replace(';','],[') + ']]}}';
                     });
+                    var markers = [];
+                    var opts = {
+                        width : 250,     // 信息窗口宽度
+                        height: 80,     // 信息窗口高度
+                        title : "信息窗口" , // 信息窗口标题
+                        enableMessage:true//设置允许信息窗发送短息
+                    };
                     //处理模拟的数据
-                    for (var i = 0; i < this.data_info.length; i++) {
-                        // var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+                    for (let i = 0; i < this.data_info.length; i++) {
                         var content = this.data_info[i][2];
                         // console.log(series_data);
                         var pt = new BMap.Point(this.data_info[i][0], this.data_info[i][1]);
                         var myIcon = new BMap.Icon(this.tupian1, new BMap.Size(30, 30));
                         var myIcon1 = new BMap.Icon(this.tupian2, new BMap.Size(30, 30));
-                        // var myIcon2 = new BMap.Icon("./html/images/3.png", new BMap.Size(30, 30));
-                        
-                        if (this.data_info[i][3] <= 40) {
-                            var marker2 = new BMap.Marker(pt, {
-                                icon: myIcon1
-                            });
-                            map.addOverlay(marker2);
-                            var label = new BMap.Label("3/5",{offset:new BMap.Size(0,0)});
-                            label.setStyle({
-                                color: "red",
-                                fontSize: "9px",
-                                backgroundColor: "0.05",
-                                border: "0",
-                                fontWeight: "bold"
-                            });
-                            marker2.setLabel(label);
-                            
-                            // marker2.setAnimation(BMAP_ANIMATION_BOUNCE);  // 会动
-                        } else if (this.data_info[i][3] >= 60 && this.data_info[i][3] < 80) {
-                            var marker2 = new BMap.Marker(pt, {
-                                icon: myIcon
-                            });
-                            map.addOverlay(marker2);
-                            var label = new BMap.Label("5/3",{offset:new BMap.Size(0,0)});
-                            label.setStyle({
-                                color: "red",
-                                fontSize: "9px",
-                                backgroundColor: "0.05",
-                                border: "0",
-                                fontWeight: "bold"
-                            });
-                            marker2.setLabel(label);
-                        }
+                        markers.push(new BMap.Marker(pt));
                     }
-                    // map.addEventListener("click", function(e) {
-                    // 	let point = new BMap.Point(e.point.lng, e.point.lat);
-                    // 	map.centerAndZoom(point, 16);
-                    // 	//(e.point.lng + ", " + e.point.lat)地图坐标
-                    // 	//("地图缩放至：" + this.getZoom() + "级")地图缩放级别
-                    // });
-                } 
+                    for (let i = 0; i < markers.length; i++) {
+                        var _iw = this.createInfoWindow(i);
+                        this.addClickHandler(markers[i], _iw);
+                    }
+                    //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+                    var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+                },
+                addClickHandler(markers, _iw) {
+                    markers.addEventListener("click", function (e) {
+                        this.openInfoWindow(_iw);
+                    });
+                },
+                //创建InfoWindow
+                createInfoWindow(i){
+                //这个地方复制一下上面的var  不然会不显示报错无锡市惠山经济开发区智慧路18号<br/>电话：15061509527",point:"120.32801|31.686872",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}];
+                    var json = this.data_info;
+                    var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json[i][2] + "'>" + "</b><div class='iw_poi_content'>"+json[i][2]+"</div>");
+                    return iw;
+                },
+                //创建一个Icon
+                createIcon(){
+                    //这个地方我是用本地图标图片的
+                    var icon = new BMap.Icon(this.tupian1, new BMap.Size(30, 30));
+                    // var icon = new BMap.Icon(myIcon, new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+                    return icon;
+                }
             }
         })
 </script>

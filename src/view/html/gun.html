@@ -1,102 +1,110 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
- 
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>vue实现无缝滚动</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
- 
-        #box {
-            width: 300px;
-            height: 124px;
-            line-height: 30px;
-            overflow: hidden;
-            padding-left: 30px;
-            border: 1px solid black;
-            transition: all 0.5s;
-        }
- 
-        .scroll {
-            transition: all 0.5s;
-            margin-top: -34px;
-        }
- 
-        #con1 li {
-            list-style: none;
-            line-height: 34px;
-            height: 34px;
-        }
- 
-        .active {
-            color: red;
-        }
-    </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: "微软雅黑";
+    }
+
+    #allmap {
+      width: 100%;
+      height: 500px;
+    }
+
+    p {
+      margin-left: 5px;
+      font-size: 14px;
+    }
+
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js">
+  </script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js">
+  </script>
+  <title>点聚合</title>
 </head>
- 
+
 <body>
-    <div id="app">
-        <div id="box">
-            <ul :class="{scroll:animate==true}">
-                <li v-for='(item,index) in items' :key="index" @click="item.active = !item.active" :class="{'active':item.active}">{{item.name}}</li>
-            </ul>
-        </div>
-    </div>
- 
-    <script>
-        new Vue({
-            el: "#app",
-            data: {
-                animate: false,
-                items: [{
-                        name: "1马云",
-                        active: false
-                    },
-                    {
-                        name: "2雷军",
-                        active: false
-                    },
-                    {
-                        name: "3张珊",
-                        active: false
-                    },
-                    {
-                        name: "4李思",
-                        active: false
-                    },
-                    {
-                        name: "5王武",
-                        active: false
-                    },
-                    {
-                        name: "6赵柳",
-                        active: false
-                    },
-                ]
-            },
-            mounted() {
-                setInterval(this.listScroll, 100);
-            },
-            methods: {
-                listScroll() {
-                    if (this.items.length >= 5) {
-                        this.animate = true
-                        setTimeout(() => {
-                            this.items.push(this.items[0]);
-                            this.items.shift();
-                            this.animate = false; // 这个地方如果不把animate 取反会出现消息回滚的现象，此时把ul 元素的过渡属性取消掉就可以完美实现无缝滚动的效果了
-                        }, 500)
-                    }
-                }
-            }
-        });
-    </script>
+  <div id="allmap"></div>
+  <p>缩放地图，查看点聚合效果</p>
 </body>
- 
+
 </html>
+<script type="text/javascript">
+  // 百度地图API功能
+  var map = new BMap.Map("allmap");
+  map.centerAndZoom(new BMap.Point(116.404, 39.915), 4);
+  map.enableScrollWheelZoom();
+  var myIcon2 = new BMap.Icon("tb1_0.png", new BMap.Size(30, 40));
+  var data = [{
+      "mapy": "32.94584",
+      "mapx": "112.894350",
+      "time": "12:30"
+    },
+    {
+      "mapy": "33.34683",
+      "mapx": "112.694300",
+      "time": "11:30"
+    },
+    {
+      "mapy": "33.54702",
+      "mapx": "112.094380",
+      "time": "10:30"
+    },
+    {
+      "mapy": "33.148780",
+      "mapx": "116.494390",
+      "time": "13:30"
+    }
+  ];
+  var markers = new Array();
+
+  $.each(data, function (i, item) {
+    var point = new BMap.Point(item.mapx, item.mapy);
+    var marker = new BMap.Marker(point);
+    var content = item.time;
+    addClickHandler(content, marker); //添加点击事件
+
+    markers.push(marker);
+
+  });
+
+  //添加聚合效果。
+  var markerClusterer = new BMapLib.MarkerClusterer(map, {
+    markers: markers
+  });
+
+  var opts = {
+    width: 250, // 信息窗口宽度
+    height: 80, // 信息窗口高度
+    title: "信息窗口", // 信息窗口标题
+    enableMessage: true //设置允许信息窗发送短息
+  };
+
+
+
+  function addClickHandler(content, marker) {
+    marker.addEventListener("click", function (e) {
+
+      openInfo(content, e)
+    });
+  }
+
+
+  function openInfo(content, e) {
+    var p = e.target;
+    var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+    var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
+    map.openInfoWindow(infoWindow, point); //开启信息窗口
+  }
+
+</script>

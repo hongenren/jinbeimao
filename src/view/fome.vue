@@ -35,7 +35,39 @@ export default { 
 			let map = new BMap.Map(this.$refs.allmap); // 创建Map实例 
 			var point = new BMap.Point(116.404, 39.915);   
 			map.centerAndZoom(point, 3); // 初始化地图,设置中心点坐标（经纬度/城市的名称）和地图级别 
-			   
+			   // var myIcon2 = new BMap.Icon("./html/images/3.png", new BMap.Size(30, 30));
+
+                        // if (this.data_info[i][3] <= 40) {
+                        //     var marker2 = new BMap.Marker(pt, {
+                        //         icon: myIcon1
+                        //     });
+                        //     map.addOverlay(marker2);
+                        //     var label = new BMap.Label("3/5",{offset:new BMap.Size(0,0)});
+                        //     label.setStyle({
+                        //         color: "red",
+                        //         fontSize: "9px",
+                        //         backgroundColor: "0.05",
+                        //         border: "0",
+                        //         fontWeight: "bold"
+                        //     });
+                        //     marker2.setLabel(label);
+                            
+                        //     // marker2.setAnimation(BMAP_ANIMATION_BOUNCE);  // 会动
+                        // } else if (this.data_info[i][3] >= 60 && this.data_info[i][3] < 80) {
+                        //     var marker2 = new BMap.Marker(pt, {
+                        //         icon: myIcon
+                        //     });
+                        //     map.addOverlay(marker2);
+                        //     var label = new BMap.Label("5/3",{offset:new BMap.Size(0,0)});
+                        //     label.setStyle({
+                        //         color: "red",
+                        //         fontSize: "9px",
+                        //         backgroundColor: "0.05",
+                        //         border: "0",
+                        //         fontWeight: "bold"
+                        //     });
+                        //     marker2.setLabel(label);
+                        // }
 			// map.addControl(new BMap.MapTypeControl({ //添加地图类型控件
 			// 	type: BMAP_NAVIGATION_CONTROL_SMALL,
 			// 	    mapTypes: [     BMAP_NORMAL_MAP,      BMAP_HYBRID_MAP    ]
