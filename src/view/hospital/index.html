@@ -97,27 +97,29 @@
 				</div>
 				<div class="main-right fr">
                     <div class="title1">医废收集总量统计</div>
-                    <div class="table-jc" :style='"top:" + top + "px;"' class="anim">
-                        <table class="jcsj" v-for="(item, index) in Company" :key="index">
-                            <tbody>
-                                <tr><td colspan="4">医院名称：拉丝粉阿萨德{{index}}</td></tr>
-                                <tr><td colspan="4">科室：拉丝粉阿萨德</td></tr>
-                                <tr><td colspan="4">条形表示：拉丝粉阿萨德</td></tr>
-                                <tr>
-                                    <td>废物类型</td>
-                                    <td>废物类型</td>
-                                    <td>废物类型</td>
-                                    <td>废物类型</td>
-                                </tr>
-                                <tr>
-                                    <td>废物类型</td>
-                                    <td>废物类型</td>
-                                    <td>废物类型</td>
-                                    <td>废物类型</td>
-                                </tr>
-                                <tr><td colspan="4">收集时间：拉丝粉阿萨德</td></tr>
-                            </tbody>
-                        </table>
+                    <div style="position:relative;overflow: hidden;">
+                        <div class="table-jc" :style='"top:" + top + "px;"' class="anim">
+                            <table class="jcsj" v-for="(item, index) in newData" :key="index">
+                                <tbody>
+                                    <tr><td colspan="4">医院名称：拉丝粉阿萨德{{index}}</td></tr>
+                                    <tr><td colspan="4">科室：拉丝粉阿萨德</td></tr>
+                                    <tr><td colspan="4">条形表示：拉丝粉阿萨德</td></tr>
+                                    <tr>
+                                        <td>废物类型</td>
+                                        <td>废物类型</td>
+                                        <td>废物类型</td>
+                                        <td>废物类型</td>
+                                    </tr>
+                                    <tr>
+                                        <td>废物类型</td>
+                                        <td>废物类型</td>
+                                        <td>废物类型</td>
+                                        <td>废物类型</td>
+                                    </tr>
+                                    <tr><td colspan="4">收集时间：拉丝粉阿萨德</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 				</div>
 			</div>
@@ -175,9 +177,25 @@ var vm = new Vue({
             methods: {
                 play () {
                     let demo = document.getElementsByClassName('table-jc')[0];
-                    setInterval(function(){
-                        demo.scrollTop++
-                    },10)
+                    var l1=document.getElementsByClassName("jcsj");
+                    var l2=document.getElementsByClassName("jcsj1");
+                    let itemNum = 4;
+                    let num = this.Company.length % itemNum;
+                    let addData = num > itemNum / 2 ? this.Company.slice(0, num + itemNum) : this.Company.slice(0, itemNum * 2);
+                    if (this.Company.length > 4) {
+                        this.newData = this.Company.concat(addData);
+                        console.log(this.newData);
+                        this.timer = setInterval(this.scroll, 30);
+                    } else {
+                        this.newData = this.Company;
+                    }
+                },
+                scroll () {
+                    if (this.top > -800) {
+                        this.top--
+                    } else {
+                        this.top = 0
+                    }
                 },
                 drawLine () {
                     let myChart = echarts.init(document.getElementById('myChart'));

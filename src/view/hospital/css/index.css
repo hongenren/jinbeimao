@@ -205,7 +205,7 @@ li{
     overflow: hidden;
 }
 .table-jc{
-    overflow: hidden;
+    position: relative;
     height: 800px;
 }
 .jcsj{
