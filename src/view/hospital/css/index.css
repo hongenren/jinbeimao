@@ -21,9 +21,7 @@ body{
     -o-background-size: cover;
     background-size: cover;
 }
-html, body{
-    height: 100%;
-}
+
 /* 设置滚动条的样式 */
 ::-webkit-scrollbar {
     width:10px;
@@ -98,7 +96,7 @@ li{
     color: #fff;
 }
 .table-box{
-    height: 230px;
+    height: 200px;
     overflow-y: scroll;
 }
 .yf-table{
@@ -111,7 +109,7 @@ li{
 }
 .yf-table tr{
     border: 1px solid #fff;
-    height: 50px;
+    height: 40px;
 }
 .yf-table td, th{
     border: 1px solid #fff;

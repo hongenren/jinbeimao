@@ -7,7 +7,7 @@
     <title>医院</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+<body :style='"height:" + height + "px;"'>
 <div id="app">    
     <div class="supervise-warp">
 		<div class="supervise">
@@ -38,7 +38,7 @@
 							<li>总重量：106.69</li>
 							<li>总包次：69</li>
 						</ul>
-						<div id="myChart" style="width: 100%;height:200px;"></div>
+						<div id="myChart" style="width: 100%;height:200%;"></div>
 					</div>
 					<div class="medical-box">
                         <div class="title1">监测点医废收集统计</div>
@@ -138,6 +138,7 @@ var vm = new Vue({
             el: '#app',
             data() {
                 return {
+                    height: window.innerHeight,
                     top: 0,
                     newData: [],
                     Company: ['1', '2', '3', '4', '2'],
