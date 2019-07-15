@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>医院</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body :style='"height:" + height + "px;"'>
+<div id="app">    
+    <div class="supervise-warp">
+		<div class="supervise">
+			<h1 class="title">
+				四川卫生监督综合在线监管系统
+			</h1>
+			<div class="header">
+				<div class="fl">2019年7月1号11：08星期二</div>
+				<div class="fr">进入管理退出</div>
+			</div>
+			<div class="navbar">
+				<ul>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+					<li>水质监测中心</li>
+				</ul>
+			</div>
+			<div class="maincontent">
+				<div class="main-top">
+					<div class="quantity-box"  v-for="item in 4">
+                        <div class="title1">医废收集总量统计</div>
+						<div class="figure">
+                            <div class="fl">
+                                新增申请<span>110个</span>
+                            </div>
+                            <div class="quantity-text fl">新增申请<span>110</span>个</div>
+                        </div>
+                    </div>
+				</div>
+				<div class="main-top">
+                    <div class="quantity-box">
+                        <div class="title1">医废收集总量统计</div>
+                        <div id="myChart" style="width: 100%;height:200%;margin-top:20px;"></div>
+                    </div>
+                    <div class="quantity-box">
+                        <div class="title1">医废收集总量统计</div>
+                        <div>
+                            <div class="percentage fl">
+                                80%
+                            </div>
+                            <div class="fl">
+                                <div id="myChart1" style="width: 200%;height:220%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quantity-box">
+                        <div class="title1">医废收集总量统计</div>
+                        <div id="myChart2" style="width: 100%;height:200%;margin-top:20px;"></div>
+                    </div>
+                    <div class="quantity-box">
+                        <div class="title1">医废收集总量统计</div>
+                        <div id="myChart3" style="width: 100%;height:200%;margin-top:20px;"></div>
+                    </div>
+                </div>
+                <div class="main-top">
+                    <div class="quantity-warning">
+                        <div class="title1">医废收集总量统计</div>
+                        <div class="warning-num">
+                            <div id="myChart4" style="width: 100%;height:400%"></div>
+                            <div class="wenzi">配宝预警</div>
+                        </div>
+                        <div class="warning-num"></div>
+                        <div class="warning-num"></div>
+                    </div>
+                    <div class="quantity-warning">
+                        <div class="title1">医废收集总量统计</div>
+                        <ul>
+                            <li class="abnormali">
+                                <div class="infirmary fl">四川肿瘤医院</div>
+                                <div class="time fl">2018-10-9:10:20</div>
+                                <div class="violation fr">违规交接预警<span>未处理</span></div>
+                            </li>
+                        </ul>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>    
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=b4DGjmRcKL2uZDHY2cKoa5j8qOxCB9s9&s=1"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<script>
+var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    height: window.innerHeight,
+                    top: 0,
+                    newData: [],
+                    Company: ['1', '2', '3', '4', '2'],
+                    tupian1: './img/1.png',
+                    tupian2: './img/2.png',
+                    data_info: [
+                        [114.502461, 38.045474, "网站名称：市住房公积金;网站ip:192.168.1.100;网站URL:www.aaa.com;", 30],
+                        [120.153576, 29.287459, "网站名称：浙江省嘉兴市中学<br>网站ip:192.168.1.100<br>网站URL:www.ccc.com", 91],
+                        [120.750865, 30.762653, "网站名称：嘉兴经济技术开发区人力资源网", 70],
+                        [121.428599, 28.661378, "网站名称：嘉兴315维权网<br>网站ip:192.168.1.100<br>网站URL:www.jdin.com", 20],
+                        [120.153576, 30.287459, "网站名称：嘉兴旅游", 70],
+                        [120.205170, 30.25720, "网站名称：嘉兴市青少年宫", 92],
+                        [120.753576, 30.687459, "网站名称：嘉兴市公共交通总局", 55],
+                        [120.750865, 30.762653, "网站名称：嘉兴福利彩票", 35],
+                        [119.750865, 29.762653, "网站名称：嘉兴电视台", 15],
+                        [120.750865, 30.762653, "网站名称：市委老干部局", 95]
+                    ],
+                    options: [{
+                        value: 'L',
+                        label: 'L'
+                        }, {
+                        value: 'S',
+                        label: 'S'
+                        }, {
+                        value: '其他',
+                        label: '其他'
+                        }],
+                        value: []
+                    }
+            },
+            mounted () {
+                this.drawLine();
+                this.drawLine1();
+                this.drawLine2();
+                this.drawLine3();
+                this.drawLine4();
+            },
+            methods: {
+                drawLine () {
+                    let myChart = echarts.init(document.getElementById('myChart'));
+                    myChart.setOption({
+                        legend: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {},
+                        xAxis: {
+                            // name: '单位',
+                            type: 'category',
+                            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋"],
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            axisLabel: {
+                                color: '#fff'
+                            },
+                            axisTick: {
+                                show: true
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        yAxis: {
+                            // name: '数量',
+                            nameTextStyle: {
+                                color: '#fff'
+                            },
+                            type: 'value',
+                            minInterval: 1,
+                            splitLine: {
+                                show: true
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            axisTick: {
+                                inside: true
+                            },
+                            axisLabel: {
+                                color: '#fff'
+                            }
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series: [
+                            {
+                                name: '2011年',
+                                data: [5, 20, 36, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#66cdaa'
+                                }
+                            },
+                            {
+                                name: '2012年',
+                                data: [5, 20, 36, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#dcff3c'
+                                }
+                            }
+                        ]
+                    })
+                },
+                drawLine1 () {
+                    let myChart1 = echarts.init(document.getElementById('myChart1'));
+                    myChart1.setOption({
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series: [
+                            {
+                                name:'访问来源',
+                                type:'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '20',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data:[
+                                    {value:335},
+                                    {value:310}
+                                ]
+                            }
+                        ]
+                    })
+                },
+                drawLine2 () {
+                    let myChart2 = echarts.init(document.getElementById('myChart2'));
+                    myChart2.setOption({
+                        legend: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {},
+                        xAxis: {
+                            type: 'category',
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            axisLabel: {
+                                color: '#fff'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            nameTextStyle: {
+                                color: '#fff'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            axisLabel: {
+                                color: '#fff'
+                            }
+                        },
+                        series: [{
+                            data: [820, 932, 901, 934, 1290, 1330, 1320],
+                            type: 'line'
+                        }]
+                    })
+                },
+                drawLine3 () {
+                    let myChart3 = echarts.init(document.getElementById('myChart3'));
+                    myChart3.setOption({
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series : [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius : '55%',
+                                center: ['50%', '60%'],
+                                data:[
+                                    {value:335, name:'直接访问'},
+                                    {value:310, name:'邮件营销'},
+                                    {value:234, name:'联盟广告'},
+                                    {value:135, name:'视频广告'},
+                                    {value:1548, name:'搜索引擎'}
+                                ],
+                                itemStyle: {
+                                    emphasis: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    })
+                },
+                drawLine4 () {
+                    let myChart4 = echarts.init(document.getElementById('myChart4'));
+                    myChart4.setOption({
+                        tooltip: {
+                            formatter: "{a} <br/>{b} : {c}%"
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series: [
+                            {
+                                name: '业务指标',
+                                type: 'gauge',
+                                center: ["50%", "45%"], // 仪表位置
+                                radius: "80%", //仪表大小
+                                detail: {formatter:'{value}%'},
+                                axisLine: {
+                                    lineStyle: {
+                                        width:10,
+                                        color : [ //表盘颜色
+                                            [ 0.2, "#DA462C" ],//0-50%处的颜色
+                                            [ 0.8, "#FF9618" ],//51%-70%处的颜色
+                                            [ 1, "#FFED44" ],//70%-90%处的颜色
+                                        ],
+                                    }
+                                },
+                                detail: {
+                                    formatter : "{score|{value}%}",
+                                    offsetCenter: [0, "40%"],
+                                    height:30,
+                                    rich : {
+                                        score : {
+                                            color : "white",
+                                            fontFamily : "微软雅黑",
+                                            fontSize : 32
+                                        }
+                                    }
+                                },
+                                splitLine: {
+                                    show: true,        // 默认显示，属性show控制显示与否
+                                    length :10,
+                                    lineStyle:{
+                                        width:1
+                                    }
+                                },
+                                data: [{value: 51}]
+                            }
+                        ]
+                    })
+                },
+            }
+        })
+</script>
+</html>

@@ -39,7 +39,9 @@ body{
     border-radius:10px;
     background: #04a4b3;
 }
-
+.mt10{
+    margin-top: 10px;
+}
 .fl{
     float: left;
 }
@@ -221,4 +223,60 @@ li{
 }
 .anim{
     transition: all 1s;
+}
+
+/* chartDisplay.html */
+.main-top{
+    overflow: hidden;
+    margin-top: 10px;
+}
+.quantity-box{
+    width: 23%;
+    float: left;
+    margin-right: 20px;
+    padding: 5px;
+    border: 1px solid #04adbd;
+    /* box-shadow: 10px 10px 5px #2d88d5; */
+    background: #267ab2;
+}
+.figure{
+    width: 70%;
+    color: #fff;
+    padding: 20px 0;
+    margin: auto;
+}
+.figure span{ 
+    color: #ffbbff;
+    font-size: 25px;
+}
+.quantity-text{
+    margin-left: 40px;
+}
+.percentage{
+    width: 50%;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 50px;
+    color: #ffbbff;
+}
+.quantity-warning{
+    width: 47.7%;
+    float: left;
+    margin-right: 20px;
+    padding: 5px;
+    border: 1px solid #04adbd;
+    /* box-shadow: 10px 10px 5px #2d88d5; */
+    background: #267ab2;
+}
+.warning-num{
+    width: 30%;
+    position: relative;
+    margin: 20px 10px 0 12px;;
+    float: left;
+}
+.wenzi{
+    position: absolute;
+    bottom: 110px;
+    right: 38%;
+    font-size: 20px;
 }
