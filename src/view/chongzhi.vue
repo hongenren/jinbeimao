@@ -1,4 +1,4 @@
-npm <template>
+<template>
     <div class="goumai">
         <!-- header -->
             <div>
