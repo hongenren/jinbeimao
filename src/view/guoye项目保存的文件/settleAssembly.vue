@@ -2,7 +2,7 @@
     <div class="createSettle">
         <el-dialog width="1200px" class="order-dialog"
                     :close-on-click-modal = "false"
-                    title = "新建采购交割"
+                    title = "销售结算"
                    :visible.sync="orderData.purchaseDeliverydialog">
             <div class="gy-table-box">
                 <div class="title">结算明细</div>
@@ -24,7 +24,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="title">结算明细</div>
+                <div class="title">收款明细</div>
                 <table class="gy-table" style="width: 1168px;">
                     <thead>
                         <th>类别</th>
@@ -45,7 +45,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="title">结算明细</div>
+                <div class="title">其它费用</div>
                 <div class="clearfix" v-for="(item, index) in addForm.options" :key="index">
                     <div class="gy-form-group">
                         <span class="l"><strong>*</strong>申请交割日</span>
@@ -97,12 +97,72 @@
                 <button v-if="!deliveryPure" class="gy-button-extra" @click="createBuyDelivery()">确认发起结算</button>
             </div>
         </el-dialog>
+        <!-- 发起收付款 -->
+        <el-dialog width="800px" class="order-dialog"
+                    :close-on-click-modal = "false"
+                    title = "发起收款"
+                    visible.sync="false">
+            <div class="gy-form">
+                <div class="gy-form-group">
+                    <span class="l">公司名称</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">产品名称</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">付款方式</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">收款类型</span>
+                    <span>结算款</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">已付款总额(元)</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">合同金额(元)</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">结算总金额(元)</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">其他费用合计(元)</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">待收款(元)</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">本次收款金额(元)</span>
+                    <span>山东日升燃料有限公司</span>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">付款凭证</span>
+                    <gy-file-upload ref="sFileUpload" @callbackFileUpload="onCallbackSaleFileUpload"></gy-file-upload>
+                </div>
+                <div class="gy-form-group">
+                    <span class="l">备注</span>
+                    <input type="text" class="gy-input">
+                </div>
+            </div>
+            <div class="foot" style="margin:0 30px 30px 0;">
+                <button v-if="!deliveryPure" class="gy-button-extra" @click="createBuyDelivery()">确认发起结算</button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
 <script>
 // import operationProcess from '@/components/stepElement';
 // import gyFileView from './../../components/gyFileView';
+import gyFileUpload from './../../components/gyFileUpload';
 
 export default {
     name: 'deliveryAssembly',
@@ -110,6 +170,7 @@ export default {
         orderData: Object,
         orderIds: Object
     },
+    components: {gyFileUpload},
     data () {
         return {
             addForm: {
@@ -175,6 +236,14 @@ export default {
         // 删除
         delEnumerated (index) {
             this.addForm.options.splice(index, 1);
+        },
+        // 上传签证文件
+        onCallbackSaleFileUpload (fileList) {
+            console.log(fileList);
+            // this.addFrom.stampApplicationFiles = [];
+            // fileList.forEach((e) => {
+            //     this.addFrom.stampApplicationFiles.push(e.fileUrl);
+            // });
         },
         // 创建采购交割页面时获取初始数据
         initBuyDeliveryView (purchaseOrderId) {
@@ -486,6 +555,14 @@ export default {
     .createSettle {
         .foot{
             margin: 32px 16px 32px 0;
+        }
+        .gy-form{
+            .gy-form-group{
+                .l{
+                    width: auto;
+                }
+                padding: 8px 30px 8px 160px;
+            }
         }
         .gy-table-box{
             overflow: hidden;

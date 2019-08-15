@@ -50,5 +50,25 @@
     box.onmouseout=function(){
         scrollMove=setInterval(scrollup,30);
     }
+    // let a = {name:{demo:'1'}};
+    function deepCopy(obj) {
+        let result = obj;
+        if(typeof obj === 'object' && obj !== null) {
+            result = Object.prototype.toString.call(obj) === '[object Array]' ? []: {};
+            console.log(result);
+            for(let prop in obj) {
+                result[prop] = deepCopy(obj[prop]);
+                console.log(prop);
+                console.log(result[prop]);
+            }
+        }
+        return result;
+    }
+    
+// var a = 10;
+function foo() {
+  setTimeout(foo, 0); // 是否存在堆栈溢出错误?
+};    
+foo()
 </script>
 </html>

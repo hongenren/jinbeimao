@@ -15,7 +15,7 @@ button, input, select, textarea { font-size:100%; }
 table { border-collapse:collapse; border-spacing:0; }
 
 body{
-    background: url(../img/beijing.jpg)no-repeat center center fixed;
+    /* background: url(../img/beijing.jpg)no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -279,4 +279,10 @@ li{
     bottom: 110px;
     right: 38%;
     font-size: 20px;
+}
+
+/* map.html */
+.maps{
+    height: 100%;
+    width: 100%;
 }
