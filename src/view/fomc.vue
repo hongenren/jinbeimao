@@ -1,5 +1,7 @@
 <template>
   <div class="page-lazyload">
+<router-link :to="{path: '/fomb', query: {ordertype: 1} }">去啊</router-link>
+
     <h1 class="page-title">Lazy Lqoad</h1>
     <ul class="page-lazyload-list">
       <li class="page-lazyload-listitem" v-for="item in lisnt">

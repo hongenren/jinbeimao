@@ -11,7 +11,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'mint-ui/lib/style.css'
 import VueScroller from 'vue-scroller'
-
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
   Vue.use(VueScroller)
 Vue.use(MintUI)
 Vue.use(ElementUI)

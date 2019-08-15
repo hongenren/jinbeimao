@@ -1,8 +1,9 @@
 <template>
     <div class="cjjl">
         <h1>出借记录</h1>
+
     </div>
-</template>     
+</template>
 
 <script>
 export default {
@@ -26,7 +27,7 @@ export default {
                 var data=(data.data)[0]
                 _this.detail=data
             })
-        
+
     }
 
 }
