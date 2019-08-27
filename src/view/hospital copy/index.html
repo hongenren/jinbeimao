@@ -10,26 +10,16 @@
 <body>
 <div id="app" :style='"height:" + height + "px;"'>    
     <div class="supervise-warp">
+        <div class="header">
+            <div class="supervise">
+                <div class="fl"><span class="mr10">2019年7月1号</span><span class="mr10">11：08星期二</span><img src="./images/taiyang.png" alt=""></div>
+                <div class="fr"><span class="topfr">进入管理</span> <span class="topfr">退出</span></div>
+            </div>
+        </div>
+        <div class="title">
+            <img src="./images/title.png" alt="">
+        </div>
 		<div class="supervise">
-			<h1 class="title">
-				四川卫生监督综合在线监管系统
-			</h1>
-			<div class="header">
-				<div class="fl">2019年7月1号11：08星期二</div>
-				<div class="fr">进入管理退出</div>
-			</div>
-			<div class="navbar">
-				<ul>
-					<li>水质监测中心</li>
-					<li>水质监测中心</li>
-					<li>水质监测中心</li>
-					<li>水质监测中心</li>
-					<li>水质监测中心</li>
-					<li>水质监测中心</li>
-					<li>水质监测中心</li>
-					<li>水质监测中心</li>
-				</ul>
-			</div>
 			<div class="maincontent">
 				<div class="main-left fl">
 					<div class="medical-box">
@@ -40,7 +30,7 @@
 						</ul>
 						<div id="myChart" style="width: 100%;height:200%;"></div>
 					</div>
-					<div class="medical-box">
+					<!-- <div class="medical-box">
                         <div class="title1">监测点医废收集统计</div>
                         <div class="table-box">
                             <table class="yf-table">
@@ -62,8 +52,8 @@
                                 </tbody>
                             </table>
                         </div>
-					</div>
-					<div class="medical-box">
+					</div> -->
+					<!-- <div class="medical-box">
 						<div class="title1">医废收集总量统计</div>
 						<ul>
 							<li>总重量：106.69</li>
@@ -73,8 +63,8 @@
                             <div id="myChart1" style="width: 100%;height:200%;"></div>
                         </div>
 					</div>
-				</div>
-				<div class="main-center">
+				</div> -->
+				<!-- <div class="main-center">
 					<div class="fome">
                         <div class="warp">
                         <ul class="maptype">
@@ -94,8 +84,8 @@
                             </li>
                         </ul>
                     </div>
-				</div>
-				<div class="main-right fr">
+				</div> -->
+				<!-- <div class="main-right fr">
                     <div class="title1">医废收集总量统计</div>
                     <div style="position:relative;overflow: hidden;">
                         <div class="table-jc" :style='"top:" + top + "px;"' class="anim">
@@ -121,7 +111,7 @@
                             </table>
                         </div>
                     </div>
-				</div>
+				</div> -->
 			</div>
 		</div>
     </div>
@@ -170,10 +160,10 @@ var vm = new Vue({
                     }
             },
             mounted () {
-                this.drawLine();
-                this.drawLine1();
-                this.map();
-                this.play();
+                // this.drawLine();
+                // this.drawLine1();
+                // this.map();
+                // this.play();
             },
             methods: {
                 play () {

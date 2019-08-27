@@ -13,34 +13,23 @@ legend { color:#000; }
 fieldset, img { border:0; }
 button, input, select, textarea { font-size:100%; }
 table { border-collapse:collapse; border-spacing:0; }
-
+li{ float: left; }
+html {
+    font-size: 62.5%;
+}
 body{
-    background: url(../img/beijing.jpg)no-repeat center center fixed;
+    background: url(../images/beijing.png)no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
-/* 设置滚动条的样式 */
-::-webkit-scrollbar {
-    width:10px;
-    border-radius:10px;
-    background-color: #1e439b;
-}
-
-/* 滚动槽 */
-::-webkit-scrollbar-track {
-    border-radius:10px;
-}
-
-/* 滚动条滑块 */
-::-webkit-scrollbar-thumb {
-    border-radius:10px;
-    background: #04a4b3;
-}
 .mt10{
     margin-top: 10px;
+}
+.mr10{
+    margin-right: 10px;
 }
 .fl{
     float: left;
@@ -50,40 +39,42 @@ body{
 }
 .supervise-warp{
     height: 100%;
-	overflow: hidden;
-	font-size: 12px;
+    overflow: hidden;
 }
 .supervise{
     width: 98%;
 	margin: 0 auto;
 }
 .title{
-    margin-top: 20px;
-    color: #cca01e;
-    font-size: 30px;
     text-align: center;
+    margin-top: -2rem;
+}
+.title img{
+    width: 30rem;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid #3fffea;
 }
 .header{
+    background: #1f3e68;
+    height: 4rem;
+    line-height: 4rem;
     overflow: hidden;
-    padding: 0 20px;
     color: #fff;
+    font-size: 1.4rem;
+    vertical-align: middle;
 }
-li{
-    float: left;
-    font-size: 14px;
+.header img {
+    position: relative;
+    top: 0.6rem;
 }
-.navbar{
-    margin-top: 10px;
-    overflow: hidden;
+.topfr{
+    height: 2rem;
+    padding: 0.4rem 1rem;
+    border-radius: 3rem;
+    background: linear-gradient(to right, #1f8cee , #05afd4); /* 标准的语法 */
 }
-.navbar li{
-    font-size: 16px;
-    margin-right: 50px;
-    color: #FFD306;
-}
-.navbar li:first-child{
-    margin-left: 100px;
-}
+
 .maincontent{
     width: 100%;
     height: 100%;
@@ -94,7 +85,10 @@ li{
     height: auto;
 }
 .title1{
-    font-size: 16px;
+    padding: 0.3rem 0 0.3rem 1rem;
+    background: url('../images/hengxian.png');
+    border-left: 0.3rem solid #01f2f3;
+    border-radius: 0.3rem;
     color: #fff;
 }
 .table-box{
