@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 30%;
+        margin: 100px;
+        background: red;
+    }
+</style>
+<body>
+    <div id="box">
+11213
+    </div>
+</body>
+<script>
+    var targetNode  = document.getElementById('box');
+    var config = { subtree: true, childList: true, attributeFilter: ['style'], characterData: true };
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+    var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+           console.log('1', targetNode.offsetWidth)
+          });
+        });
+    observer.observe(targetNode, config);
+    
+    observer.disconnect();
+    targetNode.style.width = targetNode.offsetWidth + 'px';
+    console.log(targetNode.offsetWidth);
+</script>
+</html>
