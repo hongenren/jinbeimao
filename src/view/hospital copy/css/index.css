@@ -84,6 +84,28 @@ body{
     width: 23%;
     height: auto;
 }
+.medical-box{
+    padding-left: 0.5rem;
+    margin-top: 1rem;
+    color: #fff;
+}
+.medical-box ul{
+    overflow: hidden;
+    margin: 1rem 1.2rem;
+}
+.medical-box li{
+    margin-right: 2rem;
+}
+.qing {
+    color: #00fffc;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+.yellow{
+    color: #ffea00;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
 .title1{
     padding: 0.3rem 0 0.3rem 1rem;
     background: url('../images/hengxian.png');
@@ -91,45 +113,7 @@ body{
     border-radius: 0.3rem;
     color: #fff;
 }
-.table-box{
-    height: 200px;
-    overflow-y: scroll;
-}
-.yf-table{
-    color: #fff;
-    width: 100%;
-    border-top: 1px solid #fff;
-    border-right: 1px solid #fff;
-    border-left: 1px solid #fff;
 
-}
-.yf-table tr{
-    border: 1px solid #fff;
-    height: 40px;
-}
-.yf-table td, th{
-    border: 1px solid #fff;
-    padding: 0 20px;
-}
-.medical-box{
-    padding-left: 5px;
-    margin-top: 10px;
-}
-.medical-box ul{
-    overflow: hidden;
-    margin: 10px 40px;
-}
-.medical-box li{
-    color: #fff;
-    margin-right: 20px;
-    background: #999;
-    border-radius: 5px;
-    padding: 5px;
-}
-.myChart1box{
-    height: 200px;
-    overflow-y: scroll;
-}
 .main-center{
     float: left;
     margin-left: 40px;
