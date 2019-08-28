@@ -116,8 +116,8 @@ body{
 
 .main-center{
     float: left;
-    margin-left: 40px;
-    margin-top: 20px;
+    margin-left: 4rem;
+    margin-top: 2rem;
     width: 50%;
     height: 500px;
 }

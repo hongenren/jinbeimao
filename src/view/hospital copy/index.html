@@ -30,12 +30,16 @@
 						</ul>
 						<div id="myChart" style="width: 100%;height:200%;"></div>
 					</div>
-					<div class="medical-box">
+					<div class="medical-box" style="margin-bottom: 3rem">
 						<div class="title1" style="margin-bottom: 2rem">异常数据统计（单位：个）</div>
                         <div id="myChart1" style="width: 100%;height:200%;"></div>
+                    </div>
+                    <div class="medical-box">
+						<div class="title1" style="margin-bottom: 2rem">异常数据统计（单位：个）</div>
+                        <div id="myChart2" style="width: 100%;height:200%;"></div>
 					</div>
 				</div>
-				<!-- <div class="main-center">
+				<div class="main-center">
 					<div class="fome">
                         <div class="warp">
                         <ul class="maptype">
@@ -45,7 +49,7 @@
                         <div id="allmap" ref="allmap"></div>
                         </div>
                     </div>
-                    <div class="abnormal">
+                    <!-- <div class="abnormal">
                         <div class="title1">医废收集总量统计</div>
                         <ul>
                             <li class="abnormali">
@@ -54,8 +58,8 @@
                                 <div class="violation fr">违规交接预警<span>未处理</span></div>
                             </li>
                         </ul>
-                    </div>
-				</div> -->
+                    </div> -->
+				</div>
 				<!-- <div class="main-right fr">
                     <div class="title1">医废收集总量统计</div>
                     <div style="position:relative;overflow: hidden;">
@@ -133,7 +137,8 @@ var vm = new Vue({
             mounted () {
                 this.drawLine();
                 this.drawLine1();
-                // this.map();
+                this.drawLine2();
+                this.map();
                 // this.play();
             },
             methods: {
@@ -244,6 +249,85 @@ var vm = new Vue({
                 drawLine1 () {
                     let myChart1 = echarts.init(document.getElementById('myChart1'));
                     myChart1.setOption({
+                        legend: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {},
+                        grid: {left: '11%', right: '2%', bottom: '10%', containLable: true},
+                        xAxis: {
+                            // name: '单位',
+                            type: 'category',
+                            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋"],
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#27446b'
+                                }
+                            },
+                            axisLabel: {
+                                color: '#9eacbd'
+                            },
+                            axisTick: {
+                                show: true
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        yAxis: {
+                            // name: '数量',
+                            nameTextStyle: {
+                                color: '#27446b'
+                            },
+                            type: 'value',
+                            minInterval: 1,
+                            splitLine: {
+                                show: true,
+                                lineStyle:{
+                                    color:"#27446b",    
+                                    type:"solid"
+                                }
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#27446b'
+                                }
+                            },
+                            axisTick: {
+                                inside: true
+                            },
+                            axisLabel: {
+                                color: '#27446b'
+                            }
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series: [
+                            {
+                                name: '已处理异常数量',
+                                data: [5, 20, 3, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#00fffc'
+                                }
+                            },
+                            {
+                                name: '异常数量',
+                                data: [5, 20, 6, 10, 10],
+                                type: 'bar',
+                                barWidth: 20,
+                                itemStyle: {
+                                    color: '#c93d48'
+                                }
+                            }
+                        ]
+                    })
+                },
+                drawLine2 () {
+                    let myChart2 = echarts.init(document.getElementById('myChart2'));
+                    myChart2.setOption({
                         legend: {
                             textStyle: {
                                 color: '#fff'
