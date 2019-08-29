@@ -40,13 +40,18 @@
 					</div>
 				</div>
 				<div class="main-center">
-					<div class="fome">
-                        <div class="warp">
-                        <ul class="maptype">
-                            <li><span style="background:green;"></span>正常</li>
-                            <li><span style="background:red;"></span>异常</li>
-                        </ul>
-                        <div id="allmap" ref="allmap"></div>
+					<div class="topcenter">
+                        <div class="totality fl">
+                            <p class="zongti">总体情况（单位：KG）</p>
+                            <p class="quantity">477.985</p>
+                            <div id="myChart3" style="width: 100%;height:500%;margin-top: -8rem;"></div>
+                        </div>
+                        <div class="mapwarp fr">
+                            <div class="maptype">
+                                <p><img src="./images/dui.png" alt=""> 正常</p>
+                                <p><img src="./images/cuo.png" alt="">异常</p>
+                            </div>
+                            <div id="allmap" ref="allmap"></div>
                         </div>
                     </div>
                     <!-- <div class="abnormal">
@@ -138,6 +143,7 @@ var vm = new Vue({
                 this.drawLine();
                 this.drawLine1();
                 this.drawLine2();
+                this.drawLine3();
                 this.map();
                 // this.play();
             },
@@ -259,7 +265,7 @@ var vm = new Vue({
                         xAxis: {
                             // name: '单位',
                             type: 'category',
-                            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋"],
+                            data: ["遗失","破损","泄漏","其他"],
                             axisLine: {
                                 lineStyle: {
                                     color: '#27446b'
@@ -306,7 +312,7 @@ var vm = new Vue({
                         series: [
                             {
                                 name: '已处理异常数量',
-                                data: [5, 20, 3, 10, 10],
+                                data: [5, 20, 3, 10],
                                 type: 'bar',
                                 barWidth: 20,
                                 itemStyle: {
@@ -315,7 +321,7 @@ var vm = new Vue({
                             },
                             {
                                 name: '异常数量',
-                                data: [5, 20, 6, 10, 10],
+                                data: [5, 20, 6, 10],
                                 type: 'bar',
                                 barWidth: 20,
                                 itemStyle: {
@@ -338,7 +344,7 @@ var vm = new Vue({
                         xAxis: {
                             // name: '单位',
                             type: 'category',
-                            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋"],
+                            data: ["遗失","破损","泄漏","其他"],
                             axisLine: {
                                 lineStyle: {
                                     color: '#27446b'
@@ -385,7 +391,7 @@ var vm = new Vue({
                         series: [
                             {
                                 name: '已处理异常数量',
-                                data: [5, 20, 3, 10, 10],
+                                data: [5, 20, 3, 10],
                                 type: 'bar',
                                 barWidth: 20,
                                 itemStyle: {
@@ -394,12 +400,64 @@ var vm = new Vue({
                             },
                             {
                                 name: '异常数量',
-                                data: [5, 20, 6, 10, 10],
+                                data: [5, 20, 6, 10],
                                 type: 'bar',
                                 barWidth: 20,
                                 itemStyle: {
                                     color: '#c93d48'
                                 }
+                            }
+                        ]
+                    })
+                },
+                drawLine3 () {
+                    let myChart3 = echarts.init(document.getElementById('myChart3'));
+                    myChart3.setOption({
+                        legend: {
+                            textStyle: {
+                                color: '#fff'
+                            },
+                            orient: 'vertical',
+                            y: 'bottom',
+                            data:['感染性','损伤性','感染性','病理性','药物性']
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        // Declare several bar series, each will be mapped
+                        // to a column of dataset.source by default.
+                        series: [
+                            {
+                                name:'病理情况',
+                                type:'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data:[
+                                    {value:335, name:'感染性', itemStyle: {color: '#2ea496'}},
+                                    {value:310, name:'损伤性', itemStyle: {color: '#5895d9'}},
+                                    {value:234, name:'感染性', itemStyle: {color: '#0969a6'}},
+                                    {value:135, name:'病理性', itemStyle: {color: '#02ccff'}},
+                                    {value:1548, name:'药物性', itemStyle: {color: '#20edea'}}
+                                ]
                             }
                         ]
                     })
@@ -420,16 +478,16 @@ var vm = new Vue({
                     map.enableDoubleClickZoom();      //启用双击放大，默认启用
                        
                     map.setMapStyle({
-                        style: 'bluish'
+                        style: ''
                     }); //地图风格
                     var bdary = new BMap.Boundary();
-                    bdary.get('浙江省', function(rs) { //获取行政区域
+                    bdary.get('江西省', function(rs) { //获取行政区域
                         // map.clearOverlays(); //清除地图覆盖物
                         var count = rs.boundaries.length; //行政区域的点有多少个
                         for (var i = 0; i < count; i++) {
                             var ply = new BMap.Polygon(rs.boundaries[i], {
                                 strokeWeight: 2,
-                                fillColor: "#00a75b",
+                                fillColor: "#3877a0",
                                 strokeColor: "#ff0000"
                             }); //建立多边形覆盖物
                             map.addOverlay(ply); //添加覆盖物

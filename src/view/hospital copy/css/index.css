@@ -119,18 +119,49 @@ body{
     margin-left: 4rem;
     margin-top: 2rem;
     width: 50%;
-    height: 500px;
+    background: url('../images/kuang.png')no-repeat top left;
+    height: 50rem;
+}
+.topcenter{
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    height: 45rem;
+    padding: 1rem 3rem;
+}
+.totality{
+    width: 40%;
+}
+.zongti{
+    padding: 1rem 0;
+}
+.quantity{
+    display: inline-block;
+    border: 1px solid #3fffea;
+    background-color: #0e2743;
+    font-size: 1.8rem;
+    font-weight: 900;
+    padding: 0.5rem;
 }
 /*设置地图的宽高*/
-.warp{
-	position: relative;
+.mapwarp{
+    width: 50%;
+    margin-right: 2rem;
+	/* position: relative; */
 }
 .maptype{
 	position: absolute;
-	top: 8px;
-	left: 8px;
-	color: #fff;
+	top: 2rem;
+    right: 6rem;
+    font-weight: 900;
+	color: #000;
 	z-index: 9999;
+}
+.maptype p {
+    padding: 0.5rem 0;
+}
+.maptype img {
+    vertical-align: middle;
 }
 .maptype  li{
 	font-size: 14px;
