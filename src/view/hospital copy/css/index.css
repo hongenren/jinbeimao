@@ -222,6 +222,7 @@ body{
 .video{
     background: url(../images/you1.png)no-repeat top left;
     min-height: 22rem;
+    padding: 2rem 0 0 1rem;
 }
 .table-box{
     margin-top: 1rem;
