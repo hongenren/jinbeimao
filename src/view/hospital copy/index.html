@@ -44,7 +44,7 @@
                         <div class="totality fl">
                             <p class="zongti">总体情况（单位：KG）</p>
                             <p class="quantity">477.985</p>
-                            <div id="myChart3" style="width: 100%;height:500%;margin-top: -8rem;"></div>
+                            <div id="myChart3" style="width: 100%;height:460%;margin-top: -8rem;"></div>
                         </div>
                         <div class="mapwarp fr">
                             <div class="maptype">
@@ -54,22 +54,45 @@
                             <div id="allmap" ref="allmap"></div>
                         </div>
                     </div>
-                    <!-- <div class="abnormal">
-                        <div class="title1">医废收集总量统计</div>
-                        <ul>
+                    <div class="abnormal">
+                        <div class="title1">实时预警</div>
+                        <ul style="padding-top: 1rem;">
                             <li class="abnormali">
                                 <div class="infirmary fl">四川肿瘤医院</div>
+                                <div class="infirmary fl" style="margin-left: 10rem;">泌尿一科</div>
                                 <div class="time fl">2018-10-9:10:20</div>
-                                <div class="violation fr">违规交接预警<span>未处理</span></div>
+                                <div class="violation fr">超时预警<span>未处理</span></div>
+                            </li>
+                            <li class="abnormali">
+                                <div class="infirmary fl">四川肿瘤医院</div>
+                                <div class="infirmary fl" style="margin-left: 10rem;">泌尿一科</div>
+                                <div class="time fl">2018-10-9:10:20</div>
+                                <div class="violation fr">超时预警<span style="background: #26cbf2;">已处理</span></div>
+                            </li>
+                            <li class="abnormali">
+                                <div class="infirmary fl">四川肿瘤医院</div>
+                                <div class="infirmary fl" style="margin-left: 10rem;">泌尿一科</div>
+                                <div class="time fl">2018-10-9:10:20</div>
+                                <div class="violation fr">超时预警<span>未处理</span></div>
+                            </li>
+                            <li class="abnormali">
+                                <div class="infirmary fl">四川肿瘤医院</div>
+                                <div class="infirmary fl" style="margin-left: 10rem;">泌尿一科</div>
+                                <div class="time fl">2018-10-9:10:20</div>
+                                <div class="violation fr">超时预警<span style="background: #26cbf2;">已处理</span></div>
                             </li>
                         </ul>
-                    </div> -->
+                    </div>
 				</div>
-				<!-- <div class="main-right fr">
-                    <div class="title1">医废收集总量统计</div>
-                    <div style="position:relative;overflow: hidden;">
-                        <div class="table-jc" :style='"top:" + top + "px;"' class="anim">
-                            <table class="jcsj" v-for="(item, index) in newData" :key="index">
+				<div class="main-right fr">
+                    <div class="title1" style="margin-left: 1.3rem;">医废收集实时监控视频</div>
+                    <div class="video">
+
+                    </div>
+                    <div class="table-box">
+                        <div class="title1" style="margin-left: 1.3rem;">医废收集实时动态</div>
+                        <div class="table-jc">
+                            <table class="jcsj" v-for="(item, index) in newData" :key="index" :style='"top:" + top + "px;"' class="anim">
                                 <tbody>
                                     <tr><td colspan="4">医院名称：拉丝粉阿萨德{{index}}</td></tr>
                                     <tr><td colspan="4">科室：拉丝粉阿萨德</td></tr>
@@ -91,7 +114,7 @@
                             </table>
                         </div>
                     </div>
-				</div> -->
+				</div>
 			</div>
 		</div>
     </div>
@@ -145,7 +168,7 @@ var vm = new Vue({
                 this.drawLine2();
                 this.drawLine3();
                 this.map();
-                // this.play();
+                this.play();
             },
             methods: {
                 play () {
@@ -478,7 +501,7 @@ var vm = new Vue({
                     map.enableDoubleClickZoom();      //启用双击放大，默认启用
                        
                     map.setMapStyle({
-                        style: ''
+                        style: 'midnight'
                     }); //地图风格
                     var bdary = new BMap.Boundary();
                     bdary.get('江西省', function(rs) { //获取行政区域

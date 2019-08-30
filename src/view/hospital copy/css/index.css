@@ -42,7 +42,7 @@ body{
     overflow: hidden;
 }
 .supervise{
-    width: 98%;
+    width: 92%;
 	margin: 0 auto;
 }
 .title{
@@ -154,7 +154,7 @@ body{
 	top: 2rem;
     right: 6rem;
     font-weight: 900;
-	color: #000;
+	color: #fff;
 	z-index: 9999;
 }
 .maptype p {
@@ -188,110 +188,67 @@ body{
 }
 /*  */
 .abnormal{
-    padding: 5px;
+    padding: 1.5rem 2.5rem;
+    font-size: 1.4rem;
+    background: url(../images/di.png)no-repeat top left;
+}
+.abnormal .title1{
+    background: none;
 }
 .abnormali{
     overflow: hidden;
+    width: 90%;
     float: none;
-    padding: 5px 0;
-    border-bottom: 1px solid #fff;
-    border-top: 1px solid #fff;
+    padding: 0.5rem 1.1rem;
+    border-bottom: 1px solid #26405c;
     color: #fff;
 }
 .time{
     margin-left: 200px;
 }
 .violation span{
-    margin: 0 5px;
+    margin: 0 0.5rem;
     display: inline-block;
-    padding: 2px;
-    border-radius: 5px;
-    font-size: 12px;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;;
     background: #d9534f;
 }
 .main-right{
     width: 23%;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+.video{
+    background: url(../images/you1.png)no-repeat top left;
+    min-height: 22rem;
+}
+.table-box{
+    margin-top: 1rem;
+    position:relative;
     overflow: hidden;
 }
 .table-jc{
     position: relative;
-    height: 800px;
+    height: 35rem;
+    background: url(../images/youxia.png)no-repeat top left;
+    background-size: 100% 40rem;
+    padding: 3rem 2rem 2rem 1.5rem;
 }
 .jcsj{
     color: #fff;
     width: 100%;
-    border-top: 1px solid #fff;
-    border-right: 1px solid #fff;
-    border-left: 1px solid #fff;
-    margin-bottom: 10px;
+    border: 1px solid #26405c;
+    margin-bottom: 1.5rem;
 
 }
 .jcsj tr{
-    border: 1px solid #011c3c;
-    height: 30px;
+    border: 1px solid #26405c;
+    height: 3rem;
+}
+.jcsj td{
+    padding: 0 1rem;
 }
 .anim{
     transition: all 1s;
-}
-
-/* chartDisplay.html */
-.main-top{
-    overflow: hidden;
-    margin-top: 10px;
-}
-.quantity-box{
-    width: 23%;
-    float: left;
-    margin-right: 20px;
-    padding: 5px;
-    border: 1px solid #04adbd;
-    /* box-shadow: 10px 10px 5px #2d88d5; */
-    background: #267ab2;
-}
-.figure{
-    width: 70%;
-    color: #fff;
-    padding: 20px 0;
-    margin: auto;
-}
-.figure span{ 
-    color: #ffbbff;
-    font-size: 25px;
-}
-.quantity-text{
-    margin-left: 40px;
-}
-.percentage{
-    width: 50%;
-    text-align: center;
-    padding-top: 50px;
-    font-size: 50px;
-    color: #ffbbff;
-}
-.quantity-warning{
-    width: 47.7%;
-    float: left;
-    margin-right: 20px;
-    padding: 5px;
-    border: 1px solid #04adbd;
-    /* box-shadow: 10px 10px 5px #2d88d5; */
-    background: #267ab2;
-}
-.warning-num{
-    width: 30%;
-    position: relative;
-    margin: 20px 10px 0 12px;;
-    float: left;
-}
-.wenzi{
-    position: absolute;
-    bottom: 110px;
-    right: 38%;
-    font-size: 20px;
-}
-
-/* map.html */
-.maps{
-    height: 100%;
-    width: 100%;
 }
