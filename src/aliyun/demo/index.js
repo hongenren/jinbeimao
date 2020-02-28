@@ -27,8 +27,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
-const accessKeyId = 'LTAIJF7NwR9vWXob'
-const secretAccessKey = 'BXJMPaZdambG0d20QPzlahKnRchhdu'
+const accessKeyId = ''
+const secretAccessKey = ''
 
 
 
