@@ -8,6 +8,8 @@
 <h2>
   {{parentMsg}}
 </h2>
+<input type="text">
+<router-link :to="{ path: '/fomb', query: {ordertype: 2} }">去啊</router-link>
  <!-- 定义一个子组件传值的方法 -->
  <div  @click="childClick" >点击</div>
 {{message}}
@@ -32,7 +34,8 @@
   }
  },
  mounted () {
-   console.log(this.message)
- }
+  //  console.log(this.message)
+ },
+
  }
 </script>

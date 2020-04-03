@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap{width:100%;height:500px;}
+		p{margin-left:5px; font-size:14px;}
+	</style>
+    <script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=b4DGjmRcKL2uZDHY2cKoa5j8qOxCB9s9&s=1"></script>
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script> -->
+	<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+	<title>点聚合</title>
+</head>
+<body>
+	<div id="allmap"></div>
+	<p>缩放地图，查看点聚合效果</p>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+    var datas = [{
+        'localtion': '120.585239,31.298881'
+    }, {
+        'localtion': '120.585239,31.298881'    
+    }, {
+        'localtion': '120.585239,31.298881'    
+    }, {
+        'localtion': '120.585239,31.298881'    
+    }, {
+        'localtion': '120.585239,31.298881'   
+    }, {
+        'localtion': '120.585239,31.298881'   
+    }]
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);
+	map.enableScrollWheelZoom();
+    //先创建初始marker点
+    var markers = [];
+    for (var i = 0; i < datas.length; i++) {
+        var data = datas[i];
+        var localtion = data.localtion.split(',');
+        var m = new BMap.Marker(new BMap.Point(localtion[0], localtion[1]));
+        m.data = data;
+        markers.push(m);
+    }
+    //调用聚合封装函数
+    markerClustersPoint(markers);
+    //地图缩放重新计算聚合点
+    map.addEventListener("zoomend",function(){
+        markerClustersPoint(markers);
+    })
+    
+    //聚合添加
+   function markerClustersPoint(markers){
+      if (markerClusterer) {
+        markerClusterer.clearMarkers();//清除聚合
+      }
+      //添加点聚合API(index.html中需引入文件)
+      var markerClusterer  = new BMapLib.MarkerClusterer(map, {
+        markers: markers,
+        minClusterSize: 3, //最小的聚合数量，小于该数量的不能成为一个聚合，默认为2
+        styles: [
+          {
+            // 此处仅放置style，不要写任何内容，否则会有默认聚合的数字显示溢出
+            url: "./images/1.png",
+            size: new BMap.Size(20, 20)
+          }
+        ]
+      });
+      var cluster = markerClusterer._clusters;
+      var oldmk = [];
+      for (var i = 0; i < cluster.length; i++) {
+        if (cluster[i]._markers.length < 2) continue;
+        var cluserMakerSum = cluster[i]._markers.length;
+        // oldmk.push(addMarkerCluser(cluster[i]._center));
+      }
+    }
+	//最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+	// var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+</script>

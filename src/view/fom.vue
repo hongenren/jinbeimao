@@ -25,7 +25,7 @@
 </template>
 <script>
  import foma from './foma.vue'
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 import store from '../store/store.js'
  export default {
  components: {
@@ -45,9 +45,12 @@ import store from '../store/store.js'
  },
 computed: {
   doneTodosCount () {
-    return this.$store.getters.doneTodosCount
+    // return this.$store.getters.doneTodosCount
   }
 },
+beforeDestroy() {
+            console.log("Test destroy");
+        },
  methods: {
 
   fanhui(){

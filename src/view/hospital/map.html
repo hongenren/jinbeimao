@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>医院</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app" :style='"height:" + height + "px"'>
+    <div class="maps">
+        <div id="bigmap" ref="allmap" style="width: 100%;height:100%;"></div>
+    </div>
+</div>    
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=b4DGjmRcKL2uZDHY2cKoa5j8qOxCB9s9&s=1"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<script>
+var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    height: window.innerHeight,
+                    tupian1: './img/1.png',
+                    tupian2: './img/2.png',
+                    data_info: [
+                        [114.502461, 38.045474, "网站名称：市住房公积金;网站ip:192.168.1.100;网站URL:www.aaa.com;", 30],
+                        [120.153576, 29.287459, "网站名称：浙江省嘉兴市中学<br>网站ip:192.168.1.100<br>网站URL:www.ccc.com", 91],
+                        [120.750865, 30.762653, "网站名称：嘉兴经济技术开发区人力资源网", 70],
+                        [121.428599, 28.661378, "网站名称：嘉兴315维权网<br>网站ip:192.168.1.100<br>网站URL:www.jdin.com", 20],
+                        [120.153576, 30.287459, "网站名称：嘉兴旅游", 70],
+                        [120.205170, 30.25720, "网站名称：嘉兴市青少年宫", 92],
+                        [120.753576, 30.687459, "网站名称：嘉兴市公共交通总局", 55],
+                        [120.750865, 30.762653, "网站名称：嘉兴福利彩票", 35],
+                        [119.750865, 29.762653, "网站名称：嘉兴电视台", 15],
+                        [120.750865, 30.762653, "网站名称：市委老干部局", 95]
+                    ],
+                }
+            },
+            mounted () {
+                this.map();
+            },
+            methods: {
+                map() {
+                    console.log(this.data_info);
+                    let map = new BMap.Map(this.$refs.allmap); // 创建Map实例 
+                    var point = new BMap.Point(116.404, 39.915);   
+                    map.centerAndZoom(point, 3); // 初始化地图,设置中心点坐标（经纬度/城市的名称）和地图级别 
+                       
+                    // map.addControl(new BMap.MapTypeControl({ //添加地图类型控件
+                    // 	type: BMAP_NAVIGATION_CONTROL_SMALL,
+                    // 	    mapTypes: [     BMAP_NORMAL_MAP,      BMAP_HYBRID_MAP    ]
+                    // }));   
+                    map.setCurrentCity("浙江"); // 设置地图显示的城市 此项是必须设置的 
+                       
+                    map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放 
+                    map.enableDoubleClickZoom();      //启用双击放大，默认启用
+                       
+                    map.setMapStyle({
+                        style: 'bluish'
+                    }); //地图风格
+                    var bdary = new BMap.Boundary();
+                    bdary.get('浙江省', function(rs) { //获取行政区域
+                        // map.clearOverlays(); //清除地图覆盖物
+                        var count = rs.boundaries.length; //行政区域的点有多少个
+                        for (var i = 0; i < count; i++) {
+                            var ply = new BMap.Polygon(rs.boundaries[i], {
+                                strokeWeight: 2,
+                                fillColor: "#00a75b",
+                                strokeColor: "#ff0000"
+                            }); //建立多边形覆盖物
+                            map.addOverlay(ply); //添加覆盖物
+                            map.setViewport(ply.getPath()); //调整视野
+                        }
+                        //'{"type":"Feature","id":"0","properties":{"name":"'+name+'"},"geometry":{"type":"Polygon","coordinates":[[[' + String().replace(';','],[') + ']]}}';
+                    });
+                    var markers = [];
+                    var opts = {
+                        width : 250,     // 信息窗口宽度
+                        height: 80,     // 信息窗口高度
+                        title : "信息窗口" , // 信息窗口标题
+                        enableMessage:true//设置允许信息窗发送短息
+                    };
+                    //处理模拟的数据
+                    for (let i = 0; i < this.data_info.length; i++) {
+                        var content = this.data_info[i][2];
+                        // console.log(series_data);
+                        var pt = new BMap.Point(this.data_info[i][0], this.data_info[i][1]);
+                        var myIcon = new BMap.Icon(this.tupian1, new BMap.Size(30, 30));
+                        var myIcon1 = new BMap.Icon(this.tupian2, new BMap.Size(30, 30));
+                        markers.push(new BMap.Marker(pt));
+                    }
+                    for (let i = 0; i < markers.length; i++) {
+                        var _iw = this.createInfoWindow(i);
+                        this.addClickHandler(markers[i], _iw);
+                    }
+                    //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+                    var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+                    markerClusterer._styles[0].url = 'https://chinayiepic.oss-cn-shanghai.aliyuncs.com/trade/20190710/23ee572b-1d1d-4f5a-b4e5-a1af271bdd7d.jpg'
+                    // console.log();
+                },
+                addClickHandler(markers, _iw) {
+                    markers.addEventListener("click", function (e) {
+                        this.openInfoWindow(_iw);
+                    });
+                },
+                //创建InfoWindow
+                createInfoWindow(i){
+                //这个地方复制一下上面的var  不然会不显示报错无锡市惠山经济开发区智慧路18号<br/>电话：15061509527",point:"120.32801|31.686872",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}];
+                    var json = this.data_info;
+                    var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json[i][2] + "'>" + "</b><div class='iw_poi_content'>"+json[i][2]+"</div>");
+                    return iw;
+                },
+                //创建一个Icon
+                createIcon(){
+                    //这个地方我是用本地图标图片的
+                    var icon = new BMap.Icon(this.tupian1, new BMap.Size(30, 30));
+                    // var icon = new BMap.Icon(myIcon, new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+                    return icon;
+                }
+            }
+        })
+</script>
+</html>

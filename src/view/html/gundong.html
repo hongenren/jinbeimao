@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0;}
+        ul,li{list-style: none;}
+        #box{ width: 200px; height:90px; overflow:hidden; border:1px solid red;}
+</style>
+</head>
+<body>
+
+<div id="box">
+    <ul id="list1">
+      <li>星期一</li>
+      <li>星期二</li>
+      <li>星期三</li>
+      <li>星期四</li>
+      <li>星期五</li>
+      <li>星期六</li>
+      <li>星期天</li>
+     </ul>
+     <ul id="list2"></ul>
+</div>      
+</body>
+<script type="text/javascript">
+    var box=document.getElementById("box");
+    var l1=document.getElementById("list1");
+    var l2=document.getElementById("list2");
+    l2.innerHTML=l1.innerHTML;//克隆list1的数据，使得list2和list1的数据一样
+    function scrollup(){
+        if(box.scrollTop>=l1.offsetHeight){ //滚动条距离顶部的值恰好等于list1的高度时，达到滚动临界点，此时将让scrollTop=0,让list1回到初始位置，实现无缝滚动
+            box.scrollTop=0;
+        }else{
+            box.scrollTop++;
+        }
+    }
+    
+    var scrollMove=setInterval(scrollup,30);//数值越大，滚动速度越慢
+
+    //鼠标经过时，滚动停止
+    box.onmouseover=function(){
+        clearInterval(scrollMove)
+    }
+
+    //鼠标离开时，滚动继续
+    box.onmouseout=function(){
+        scrollMove=setInterval(scrollup,30);
+    }
+    // let a = {name:{demo:'1'}};
+    function deepCopy(obj) {
+        let result = obj;
+        if(typeof obj === 'object' && obj !== null) {
+            result = Object.prototype.toString.call(obj) === '[object Array]' ? []: {};
+            console.log(result);
+            for(let prop in obj) {
+                result[prop] = deepCopy(obj[prop]);
+                console.log(prop);
+                console.log(result[prop]);
+            }
+        }
+        return result;
+    }
+    
+// var a = 10;
+function foo() {
+  setTimeout(foo, 0); // 是否存在堆栈溢出错误?
+};    
+foo()
+</script>
+</html>

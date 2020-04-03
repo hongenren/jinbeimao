@@ -61,7 +61,9 @@ export default new Router({
       path: '/foma',
 
       component: foma,
-
+      meta:{
+        keepAlive: true
+      }
 
     },
     {

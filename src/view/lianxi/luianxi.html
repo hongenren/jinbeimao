@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+var arr = [
+    {
+        id:1,
+        qian: 22
+    },
+    {
+        id:1,
+        qian: 22
+    },
+    {
+        id:2,
+        qian: 22
+    },
+    {
+        id:2,
+        qian: 22
+    },
+    
+]
+var number = 0;
+for (let i=0; i<arr.length; i++) {
+    console.log(arr[i]);
+    if (arr[i].id == 1) {
+        number += arr[i].qian;
+    } else {
+        number -= arr[i].qian;
+    }
+}
+// console.log(number);
+const toFixedFn = function (data, val) {
+    let numbers = '';
+    for (let i = 0; i < val; i++) {
+        numbers += '0';
+    }
+    console.log(numbers);
+    let s = 1 + numbers;
+    let spot = '.' + numbers;
+    let value = Math.round(parseFloat(data) * s) / s;
+    console.log(Math.round(parseFloat(data) * s) / s);
+    let d = value.toString().split('.');
+    console.log(d);
+    if (d.length === 1) {
+        value = value.toString() + spot;
+        return value;
+    }
+    if (d.length > 1) {
+        if (d[1].length < 2) {
+            value = value.toString() + '0';
+        }
+        return value;
+    }
+};
+toFixedFn(200.33131321, 3);
+</script>
+</html>
